@@ -1,0 +1,97 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Solana RIP Vault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    <!-- Header -->
+    <header class="bg-gray-800 py-6 text-center">
+        <h1 class="text-4xl font-bold text-purple-500">The Solana RIP Vault</h1>
+        <p class="mt-2 text-lg text-green-400">Curated Crypt for RIP Memecoins</p>
+        <p class="mt-4 max-w-2xl mx-auto text-sm text-gray-300">Welcome to The Solana RIP Vault, the ultimate crypt for death-themed memecoins like RIP POPE and RIP TRUMP. Dive into Solana’s wildest tokens and uncover the RIP legacy.</p>
+    </header>
+
+    <!-- Main Section: Token Grid -->
+    <main class="max-w-5xl mx-auto py-12 px-4">
+        <h2 class="text-2xl font-semibold text-center mb-8">RIP Memecoins</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- RIP POPE -->
+            <a href="https://www.pump.fun/57LY5XaC9gVNxeqEUSANUpSwgdkGwULiZLZ5b95qpump" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?ixlib=rb-4.0.3&crop=entropy&cs=tinysrgb&w=100&h=100&fit=crop" alt="RIP POPE Icon" class="w-full h-24 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-bold text-purple-400">RIP POPE</h3>
+                </div>
+            </a>
+            <!-- RIP BIDEN -->
+            <a href="https://www.pump.fun/?search=RIP+BIDEN" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&crop=entropy&cs=tinysrgb&w=100&h=100&fit=crop" alt="RIP BIDEN Icon" class="w-full h-24 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-bold text-purple-400">RIP BIDEN</h3>
+                </div>
+            </a>
+            <!-- RIP TRUMP -->
+            <a href="https://www.pump.fun/?search=RIP+TRUMP" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <img src="https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&crop=entropy&cs=tinysrgb&w=100&h=100&fit=crop" alt="RIP TRUMP Icon" class="w-full h-24 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-bold text-purple-400">RIP TRUMP</h3>
+                </div>
+            </a>
+            <!-- RIP BILL COSBY -->
+            <a href="https://www.pump.fun/?search=RIP+BILL+COSBY" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&crop=entropy&cs=tinysrgb&w=100&h=100&fit=crop" alt="RIP BILL COSBY Icon" class="w-full h-24 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-bold text-purple-400">RIP BILL COSBY</h3>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-6 text-center">
+        <p class="text-sm text-green-400">The Solana RIP Vault © 2025 | Verify tokens on <a href="https://www.pump.fun/" class="underline hover:text-purple-400">Pump.fun</a></p>
+        <p class="text-sm mt-2">Join our <a href="https://x.com" class="underline hover:text-purple-400">X Community</a> for updates</p>
+    </footer>
+</body>
+</html>
