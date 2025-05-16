@@ -526,7 +526,7 @@
             <div class="multi-coin-row">
                 <div class="bg-gray-800 rounded-lg p-4 text-center">
                     <a href="https://pump.fun/coin/J4JFzT6TvCKxusQiH6XkLAjwazNmFwWMyzzxDdSH4BK9">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmYedsQjFFh5huFYg99piFw82p7BccHi6mzv8p8MrFsVQ4?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
+                        <img src="https://pump.mypinata.cloud/ipfs/QmYedsQjFFoBPBL1aVMAikBE5ropw36Tmheec9SF7W1cf1?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
                     </a>
                     <h3 class="text-lg font-bold">$RIP POPE</h3>
                     <p class="text-xs text-gray-400 break-words">CA:J4JFzT6TvCKxusQiH6XkLAjwazNmFwWMyzzxDdSH4BK9</p>
@@ -681,8 +681,8 @@
                     if (c === card) {
                         c.setAttribute('data-active', 'true');
                         c.style.order = '1';
-                        // Scroll the clicked card to the top of the page
-                        c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Scroll to the very top of the page
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     } else {
                         c.setAttribute('data-active', 'false');
                         c.style.order = '3';
