@@ -6,7 +6,6 @@
     <title>The Solana RIP Vault</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom styles for background and overlay */
         body {
             background-image: url('https://github.com/Kekonomics42069/rip-vault/blob/main/bkg.jpg?raw=true');
             background-size: cover;
@@ -16,7 +15,10 @@
             min-height: 100vh;
         }
         header, main, footer {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8); /* 80% opacity black */
+        }
+        header {
+            border: 2px solid white; /* Added white outline */
         }
         .grid-container {
             display: grid;
@@ -24,13 +26,25 @@
             gap: 1.5rem;
         }
         .coin-card[data-active="true"] {
-            grid-column: 1 / -1; /* Span all columns */
-            order: 1; /* Move to top */
-            background-color: #1f2a44; /* bg-teal-800 */
-            border: 2px solid white; /* Added white border */
+            grid-column: 1 / -1;
+            order: 1;
+            background-color: #1f2a44;
+            border: 2px solid white;
         }
         .coin-card[data-active="true"] img {
-            height: 192px; /* h-48, 2x the original h-24 */
+            height: 192px;
+            object-position: 0 20%;
+            object-fit: cover;
+        }
+        /* Specific adjustment for RIP JOE BIDEN when active */
+        .coin-card[data-active="true"][href="https://pump.fun/coin/9rXzA4kwrcxnoJoweAo3PjoDHFQnRQ5zJGTxHUDypump"] img {
+            object-position: 0 35%;
+            object-fit: cover;
+        }
+        /* Specific adjustment for RIP DONALD TRUMP when active */
+        .coin-card[data-active="true"][href="https://pump.fun/coin/Eksb48Gcr8RY195L46w9mZSgrQSUfwJoCZjiEHxspump"] img {
+            object-position: 0 40%;
+            object-fit: cover;
         }
         .multi-coin-row {
             display: none;
@@ -39,7 +53,7 @@
             gap: 1rem;
             margin-top: 1rem;
             padding: 0 1rem;
-            order: 2; /* Follow the active coin at the top */
+            order: 2;
         }
         .multi-coin-row--three {
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -51,15 +65,15 @@
             display: grid;
         }
         .coin-card[data-active="true"] + .multi-coin-row > div {
-            background-color: #1f2a44; /* bg-teal-800 */
-            border: 2px solid white; /* Added white border */
+            background-color: #1f2a44;
+            border: 2px solid white;
         }
         .coin-card[data-active="false"] {
-            background-color: #2d3748; /* bg-gray-800 */
-            order: 3; /* Push inactive coins below */
+            background-color: #2d3748;
+            order: 3;
         }
         .multi-coin-row > div {
-            background-color: #2d3748; /* bg-gray-800 */
+            background-color: #2d3748;
         }
         @media (max-width: 640px) {
             .grid-container {
@@ -78,20 +92,17 @@
     </style>
 </head>
 <body class="text-white font-sans">
-    <!-- Header -->
-    <header class="bg-gray-800 py-6 text-center">
+    <header class="py-6 text-center">
         <h1 class="text-4xl font-bold text-purple-500">The Solana RIP Vault</h1>
         <p class="mt-2 text-lg text-green-400">Curated Crypt for RIP Memecoins</p>
         <p class="mt-4 max-w-2xl mx-auto text-sm text-gray-400">It’s hard finding the right RIP coin or knowing which RIP coins have been made for who so far, so I compiled a catalog of the best RIP coins to date.</p>
     </header>
 
-    <!-- Main Section: Token Grid -->
     <main class="max-w-5xl mx-auto py-12 px-4">
         <h2 class="text-2xl font-semibold text-center mb-8">RIP Memecoins</h2>
         <div class="grid-container">
-            <!-- RIP BIDEN -->
             <a href="https://pump.fun/coin/9rXzA4kwrcxnoJoweAo3PjoDHFQnRQ5zJGTxHUDypump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmQqFeqWYJEPz9CN9Wk1KxmpkCqMXWrd65QwoPtJA2AvgA?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP BIDEN Icon" class="w-full h-24 object-cover">
+                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/bdn.jpg?raw=true" alt="RIP BIDEN Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP JOE BIDEN</h3>
                     <hr class="my-2 border-gray-500">
@@ -118,7 +129,6 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 31.4K MC</p>
                 </div>
             </div>
-            <!-- RIP TRUMP -->
             <a href="https://pump.fun/coin/Eksb48Gcr8RY195L46w9mZSgrQSUfwJoCZjiEHxspump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
                 <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/trump%20thumb.png?raw=true" alt="RIP TRUMP Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
@@ -147,7 +157,6 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 123K MC</p>
                 </div>
             </div>
-            <!-- RIP BILL COSBY -->
             <a href="https://pump.fun/coin/EtQ5zvAK1PChZAJUk6hdJPPWSKZnQ5SwcFUoT43mpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
                 <img src="https://pump.mypinata.cloud/ipfs/QmdM42dEKvWJZ7xZ7KJmduVUSDkqRSsLUpwmnATZsvxb4p?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP BILL COSBY Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
@@ -167,9 +176,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 8.5K MC</p>
                 </div>
             </div>
-            <!-- RIP CLINT EASTWOOD -->
             <a href="https://pump.fun/coin/3TJdHNhVViW4Wg4Y1ggx4Ykr6jCHA6nF3NNUabA5pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/clint%20thumb.png?raw=true" alt="RIP COIN 1 Icon" class="w-full h-24 object-cover">
+                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/clint%20thumb.png?raw=true" alt="RIP CLINT EASTWOOD Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP CLINT EASTWOOD</h3>
                     <hr class="my-2 border-gray-500">
@@ -187,9 +195,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 12.3K MC</p>
                 </div>
             </div>
-            <!-- RIP KIRK -->
             <a href="https://pump.fun/coin/BPTbKTRoKgx3CkAbgsyZEayV9tEzWD8SabuzYcr8pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/kirk%20thumb.png?raw=true" alt="RIP COIN 2 Icon" class="w-full h-24 object-cover">
+                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/kirk%20thumb.png?raw=true" alt="RIP (KIRK) WILLIAM SHATNER Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP (KIRK) WILLIAM SHATNER</h3>
                     <hr class="my-2 border-gray-500">
@@ -207,9 +214,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 9.8K MC</p>
                 </div>
             </div>
-            <!-- RIP DICK -->
             <a href="https://axiom.trade/meme/8v15gCaFvfaRD16EJsDZvGURNUcD3o9PCujFQ1K7Gzqq" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmZNgaXKbEbSENTCGEfskqs5yPUgCGxXSHpRBJUtLZK3wm?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP COIN 3 Icon" class="w-full h-24 object-cover">
+                <img src="https://pump.mypinata.cloud/ipfs/QmZNgaXKbEbSENTCGEfskqs5yPUgCGxXSHpRBJUtLZK3wm?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP DICK VAN DYKE Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP DICK VAN DYKE</h3>
                     <hr class="my-2 border-gray-500">
@@ -227,9 +233,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 14.2K MC</p>
                 </div>
             </div>
-            <!-- RIP BUFFET -->
             <a href="https://pump.fun/coin/52Ywtkcqii9RjgF88WGNeyPnT347RvzCHZbFKpGwTpAx" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/Qmb7iRS5EGg3DgEXPrVXQBZydDYVxJG8eJoNVBvcNT4Qyj?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP COIN 4 Icon" class="w-full h-24 object-cover">
+                <img src="https://pump.mypinata.cloud/ipfs/Qmb7iRS5EGg3DgEXPrVXQBZydDYVxJG8eJoNVBvcNT4Qyj?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP WARREN BUFFET Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP WARREN BUFFET</h3>
                     <hr class="my-2 border-gray-500">
@@ -247,7 +252,7 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 27.8K MC (May be inaccurate)</p>
                 </div>
                 <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/13wggeqG3pBU2zo89Fdt2J8YufATCYrKZxYXJwPpkVHw">
+                    <a href="https://dexscreener.com/solana/56mnjkbicikstrsdtfa1uk36hiavbxxrzexmma8axbc2">
                         <img src="https://pump.mypinata.cloud/ipfs/Qmb7iRS5EGg3DgEXPrVXQBZydDYVxJG8eJoNVBvcNT4Qyj?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
                     </a>
                     <h3 class="text-lg font-bold">$RIPBUFFET</h3>
@@ -265,7 +270,6 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 15.6K MC</p>
                 </div>
             </div>
-            <!-- RIP GEORGE SOROS -->
             <a href="https://pump.fun/coin/8bJe9muKDFwPknHmUr2KQPbTayqPgptFgJnUoVUgpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
                 <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/soros.jpg?raw=true" alt="RIP GEORGE SOROS Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
@@ -294,7 +298,6 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 7.5K MC</p>
                 </div>
             </div>
-            <!-- RIP DAVID ATTENBOROUGH -->
             <a href="https://pump.fun/coin/6SCtWE22bUYj5hNd2rFPg7MLbGAJEam31htgYWrnpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
                 <img src="https://pump.mypinata.cloud/ipfs/QmbTscPuFvBsTcwuKPkjNzZdMoNDoBZVyEbWxXWACjCPGc?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP DAVID ATTENBOROUGH Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
@@ -332,9 +335,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 9.16K MC</p>
                 </div>
             </div>
-            <!-- RIP BUZZ ALDRIN -->
             <a href="https://pump.fun/coin/5LZMmZubJ4RsXyrdFxgHuKT5Sfuzto743wxJuuZkpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmaYdsRwKFAZLAUxsSmX4AbDz6nsb4Du3LKcFTBkLtXHNL?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP COIN 8 Icon" class="w-full h-24 object-cover">
+                <img src="https://pump.mypinata.cloud/ipfs/QmaYdsRwKFAZLAUxsSmX4AbDz6nsb4Du3LKcFTBkLtXHNL?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP BUZZ ALDRIN Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP BUZZ ALDRIN</h3>
                     <hr class="my-2 border-gray-500">
@@ -352,9 +354,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 11.7K MC</p>
                 </div>
             </div>
-            <!-- RIP TED TURNER -->
             <a href="https://pump.fun/coin/4g3Lwp9MjuQSrJoFMvwZ7NedE14DZfzdQTsZuEWLpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmQ4VFsu3NrMbE6d4xet5wZSYMWdP1Wg1YL6UHhfmntFoD?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP COIN 9 Icon" class="w-full h-24 object-cover">
+                <img src="https://pump.mypinata.cloud/ipfs/QmQ4VFsu3NrMbE6d4xet5wZSYMWdP1Wg1YL6UHhfmntFoD?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP TED TURNER Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP TED TURNER</h3>
                     <hr class="my-2 border-gray-500">
@@ -372,9 +373,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 10.5K MC</p>
                 </div>
             </div>
-            <!-- RIP BILLY JOEL -->
             <a href="https://pump.fun/coin/P1bohCnFJtLJ3HY7W21x3FjCQ5jJQvrpegwEKXKpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmcxtBxt6xs5qwd4nQTvfPDEAJZvwNWxQnf3tHJaQ5dogM?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP COIN 10 Icon" class="w-full h-24 object-cover">
+                <img src="https://pump.mypinata.cloud/ipfs/QmcxtBxt6xs5qwd4nQTvfPDEAJZvwNWxQnf3tHJaQ5dogM?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP BILLY JOEL Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP BILLY JOEL</h3>
                     <hr class="my-2 border-gray-500">
@@ -392,9 +392,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 13.8K MC</p>
                 </div>
             </div>
-            <!-- RIP HILARY CLINTON -->
             <a href="https://pump.fun/coin/9S8Zon3XqLMN831anf1nEmP2zZVsMbykUSxaRorBpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://raw.githubusercontent.com/Kekonomics42069/rip-vault/refs/heads/main/hilary.png" alt="RIP COIN 11 Icon" class="w-full h-24 object-cover">
+                <img src="https://raw.githubusercontent.com/Kekonomics42069/rip-vault/refs/heads/main/hilary.png" alt="RIP HILARY CLINTON Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP HILARY CLINTON</h3>
                     <hr class="my-2 border-gray-500">
@@ -412,9 +411,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 7.47K MC</p>
                 </div>
             </div>
-            <!-- RIP BILL CLINTON -->
             <a href="https://pump.fun/coin/EgX8DdztRzLwkXTLNvcjQdboJSrzQ3k9vXhYR6ZTpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP COIN 12 Icon" class="w-full h-24 object-cover">
+                <img src="https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP BILL CLINTON Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP BILL CLINTON</h3>
                     <hr class="my-2 border-gray-500">
@@ -432,7 +430,7 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 15.6K MC</p>
                 </div>
                 <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/7kLqWnXzYvJ9mPbrVGD14iPqzJNcp6rkBFvCA2pump">
+                    <a href="https://birdeye.so/token/5ppFKoKJcJ7HkMbTG5AnaKC7eyFjojNhdRMeYVLrpump?chain=solana">
                         <img src="https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
                     </a>
                     <h3 class="text-lg font-bold">$RIPBILL</h3>
@@ -441,7 +439,7 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 8.1K MC</p>
                 </div>
                 <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/8mNpXrYzZwK5QtDcWKCifu5kXqVpTZyW49Pjest3pump">
+                    <a href="https://birdeye.so/token/FcB7SoNFQQuZtBz1BiZ465ECpRnpZan1kczLKt61pump?chain=solana">
                         <img src="https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
                     </a>
                     <h3 class="text-lg font-bold">$RBILL</h3>
@@ -450,9 +448,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 9.5K MC</p>
                 </div>
             </div>
-            <!-- RIP BRUCE WILLIS -->
             <a href="https://pump.fun/coin/47QrzHt3LxxnkvFh2bW4zoLXPM6Sr6kPKr9bKWSBpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmSn59qQ4aNuoJFumT5vqVq9Z1Lud9MzNJy1R1siVSdgxq?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP COIN 13 Icon" class="w-full h-24 object-cover">
+                <img src="https://pump.mypinata.cloud/ipfs/QmSn59qQ4aNuoJFumT5vqVq9Z1Lud9MzNJy1R1siVSdgxq?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP BRUCE WILLIS Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP BRUCE WILLIS</h3>
                     <hr class="my-2 border-gray-500">
@@ -470,7 +467,7 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 16.7K MC</p>
                 </div>
                 <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/9nPqXsYzZwK5QtDcWKCifu5kXqVpTZyW49Pjest4pump">
+                    <a href="https://birdeye.so/token/CzapQXkp74nvHHZLA6DWpPprYcCMdwqVqSYdD3mJeVQZ?chain=solana">
                         <img src="https://pump.mypinata.cloud/ipfs/QmSn59qQ4aNuoJFumT5vqVq9Z1Lud9MzNJy1R1siVSdgxq?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
                     </a>
                     <h3 class="text-lg font-bold">$RIPBRUCE</h3>
@@ -479,9 +476,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 21.7K MC</p>
                 </div>
             </div>
-            <!-- RIP ROBERT DE NIRO -->
             <a href="https://pump.fun/coin/5yoCEh4PMuKM5gK2Mj9wxusAXTtZaueaf7maNJuzpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmYVut6rwtj6GwYQP6e7my3pDdwtRX58xfGY2ZNsWXPe2p?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP COIN 14 Icon" class="w-full h-24 object-cover">
+                <img src="https://pump.mypinata.cloud/ipfs/QmYVut6rwtj6GwYQP6e7my3pDdwtRX58xfGY2ZNsWXPe2p?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP ROBERT DE NIRO Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP ROBERT DE NIRO</h3>
                     <hr class="my-2 border-gray-500">
@@ -499,9 +495,8 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 7.28K MC</p>
                 </div>
             </div>
-            <!-- RIP HARRISON FORD -->
             <a href="https://pump.fun/coin/FysWCjKyJT68ntYwj6tUtBWiqg1qp9hwd2xYge4npump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmfBnFtAouQyaUecM9mPyzELPAJkb2V9QJ1L6L6WxZ1JkL?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP COIN 15 Icon" class="w-full h-24 object-cover">
+                <img src="https://pump.mypinata.cloud/ipfs/QmfBnFtAouQyaUecM9mPyzELPAJkb2V9QJ1L6L6WxZ1JkL?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP HARRISON FORD Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
                     <h3 class="text-lg font-bold">RIP HARRISON FORD</h3>
                     <hr class="my-2 border-gray-500">
@@ -519,25 +514,53 @@
                     <p class="text-sm text-indigo-400 text-left">ATH: 6K MC</p>
                 </div>
             </div>
-            <!-- RIP COIN 16 -->
-            <a href="https://www.pump.fun/?search=RIP+COIN+16" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
-                <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 16 Icon" class="w-full h-24 object-cover">
+            <a href="https://www.pump.fun/?search=RIP+COIN+16" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
+                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/LEO.jpg?raw=true" alt="RIP COIN 16 Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP COIN 16</h3>
+                    <h3 class="text-lg font-bold">RIP POPE LEO XIV</h3>
                     <hr class="my-2 border-gray-500">
                     <p class="text-gray-400">(Age: 0)</p>
                 </div>
             </a>
-            <!-- RIP COIN 17 -->
-            <a href="https://www.pump.fun/?search=RIP+COIN+17" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
-                <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 17 Icon" class="w-full h-24 object-cover">
+            <div class="multi-coin-row">
+                <div class="bg-gray-800 rounded-lg p-4 text-center">
+                    <a href="https://pump.fun/coin/J4JFzT6TvCKxusQiH6XkLAjwazNmFwWMyzzxDdSH4BK9">
+                        <img src="https://pump.mypinata.cloud/ipfs/QmYedsQjFFh5huFYg99piFw82p7BccHi6mzv8p8MrFsVQ4?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
+                    </a>
+                    <h3 class="text-lg font-bold">$RIP POPE</h3>
+                    <p class="text-xs text-gray-400 break-words">CA:J4JFzT6TvCKxusQiH6XkLAjwazNmFwWMyzzxDdSH4BK9</p>
+                    <p class="text-sm text-teal-400 text-left">Created: 05/08/2025 13:33:34</p>
+                    <p class="text-sm text-indigo-400 text-left">ATH: 12.6K MC</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-4 text-center">
+                    <a href="https://pump.fun/coin/4HH45vQAnhVvtk37j98pZ7cphKuCGTuig3S3vwtWpump">
+                        <img src="https://pump.mypinata.cloud/ipfs/QmPBQR9gFFoBPBL1aVMAikBE5ropw36Tmheec9SF7W1cf1?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
+                    </a>
+                    <h3 class="text-lg font-bold">$RIP POPE</h3>
+                    <p class="text-xs text-gray-400 break-words">CA:4HH45vQAnhVvtk37j98pZ7cphKuCGTuig3S3vwtWpump</p>
+                    <p class="text-sm text-teal-400 text-left">Created: 05/08/2025 12:24:41</p>
+                    <p class="text-sm text-indigo-400 text-left">ATH: 6.1K MC</p>
+                </div>
+            </div>
+            <a href="https://www.pump.fun/?search=RIP+COIN+17" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
+                <img src="https://vz.cnwimg.com/wp-content/uploads/2021/05/amani.jpg" alt="RIP COIN 17 Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP COIN 17</h3>
+                    <h3 class="text-lg font-bold">RIP Giorgio Armani</h3>
                     <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 0)</p>
+                    <p class="text-gray-400">(Age: 90)</p>
                 </div>
             </a>
-            <!-- RIP COIN 18 -->
+            <div class="multi-coin-row">
+                <div class="bg-gray-800 rounded-lg p-4 text-center">
+                    <a href="https://pump.fun/coin/9jR6kyB9wP7rDhmUWZWDvTpfR7gHASaA4V19mgUhpump">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/GiorgioArmani.jpg/1200px-GiorgioArmani.jpg" alt="Sub-coin Icon" class="w-full h-24 object-cover">
+                    </a>
+                    <h3 class="text-lg font-bold">$RIPGA</h3>
+                    <p class="text-xs text-gray-400 break-words">CA:9jR6kyB9wP7rDhmUWZWDvTpfR7gHASaA4V19mgUhpump</p>
+                    <p class="text-sm text-teal-400 text-left">Created: 04/21/2025 08:33:27</p>
+                    <p class="text-sm text-indigo-400 text-left">ATH: 4.2K MC</p>
+                </div>
+            </div>
             <a href="https://www.pump.fun/?search=RIP+COIN+18" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
                 <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 18 Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
@@ -546,7 +569,6 @@
                     <p class="text-gray-400">(Age: 0)</p>
                 </div>
             </a>
-            <!-- RIP COIN 19 -->
             <a href="https://www.pump.fun/?search=RIP+COIN+19" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
                 <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 19 Icon" class="w-full h-24 object-cover">
                 <div class="p-4 text-center">
@@ -557,42 +579,56 @@
             </a>
         </div>
 
-        <!-- Resting in Peace Section -->
-        <section class="mt-12">
+        <section class="mt-12" id="resting-in-peace-section">
             <h2 class="text-2xl font-semibold text-center mb-8">Resting in Peace</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- RIP POPE -->
-                <a href="https://pump.fun/coin/57LY5XaC9gVNxeqEUSANUpSwgdkGwULiZLZ5b95qpump" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div class="grid-container">
+                <a href="https://pump.fun/coin/E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
+                    <img src="https://pump.mypinata.cloud/ipfs/QmWCL1diGMQcbpAEdnohvQShTAZTgnV51jSLkDkYYGJLrZ?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP Jimmy Carter Icon" class="w-full h-24 object-cover" style="object-position: 0 20%; object-fit: cover;">
+                    <div class="p-4 text-center">
+                        <h3 class="text-lg font-bold">RIP Jimmy Carter</h3>
+                        <hr class="my-2 border-gray-500">
+                        <p class="text-gray-400">October 1, 1924 – December 29, 2024</p>
+                    </div>
+                </a>
+                <div class="multi-coin-row">
+                    <div class="bg-gray-800 rounded-lg p-4 text-center">
+                        <a href="https://pump.fun/coin/E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5">
+                            <img src="https://pump.mypinata.cloud/ipfs/QmWCL1diGMQcbpAEdnohvQShTAZTgnV51jSLkDkYYGJLrZ?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
+                        </a>
+                        <h3 class="text-lg font-bold">$RIPCarter</h3>
+                        <p class="text-xs text-gray-400 break-words">CA:E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5</p>
+                        <p class="text-sm text-teal-400 text-left">Created: 12/29/2024 09:30:00</p>
+                        <p class="text-sm text-indigo-400 text-left">ATH: 544K MC</p>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg p-4 text-center">
+                        <a href="https://pump.fun/coin/F9T59DEq7cukFky2U748Cmjqy8EhpL3zXaCVB4y3lmp6">
+                            <img src="https://pump.mypinata.cloud/ipfs/QmWCL1diGMQcbpAEdnohvQShTAZTgnV51jSLkDkYYGJLrZ?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
+                        </a>
+                        <h3 class="text-lg font-bold">$RIPJIMMY</h3>
+                        <p class="text-xs text-gray-400 break-words">CA:4dwtjk9TLfEjGuydkCEyXfkc9WmfQFz5jpg9eBRjpump</p>
+                        <p class="text-sm text-teal-400 text-left">Created: 07/23/2024 10:08:09</p>
+                        <p class="text-sm text-indigo-400 text-left">ATH: 121K MC</p>
+                    </div>
+                </div>
+                <a href="https://pump.fun/coin/57LY5XaC9gVNxeqEUSANUpSwgdkGwULiZLZ5b95qpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
                     <img src="https://pump.mypinata.cloud/ipfs/QmY9hju2hz3q9SAAreucRPMW7ADRnamckxNk8Pvg8ezCmZ?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP POPE Icon" class="w-full h-24 object-cover">
                     <div class="p-4 text-center">
                         <h3 class="text-lg font-bold">RIP POPE FRANCIS</h3>
                         <hr class="my-2 border-gray-500">
-                        <p class="text-gray-400">17 December 1936 - 21 April 2025</p>
+                        <p class="text-gray-400">December 17 1936 - April 21 2025</p>
                         <p class="text-blue-500">ATH: 4.29M</p>
                     </div>
                 </a>
-                <!-- RIP COIN 20 -->
-                <a href="https://pump.fun/coin/1aBcDeFgHiJkLmNoPqRsTuVwXyZ5tUvWxYxZ7pump" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                    <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 20 Icon" class="w-full h-24 object-cover">
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-bold">RIP COIN 20</h3>
-                        <hr class="my-2 border-gray-500">
-                        <p class="text-gray-400">1 January 1940 - 22 April 2025</p>
-                        <p class="text-blue-500">ATH: 3.5M</p>
-                    </div>
-                </a>
-                <!-- RIP COIN 21 -->
-                <a href="https://pump.fun/coin/2bCdEfGhIjKlMnOpQrStUvWxYzA6uB7pump" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <a href="https://pump.fun/coin/2bCdEfGhIjKlMnOpQrStUvWxYzA6uB7pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
                     <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 21 Icon" class="w-full h-24 object-cover">
                     <div class="p-4 text-center">
                         <h3 class="text-lg font-bold">RIP COIN 21</h3>
                         <hr class="my-2 border-gray-500">
-                        <p class="text-gray-400">15 March 1935 - 23 April 2025</p>
-                        <p class="text-blue-500">ATH: 2.8M</p>
+                        <p class="text-gray-400">October 1, 1924 – December 29, 2024</p>
+                        <p class="text-blue-500">ATH: 121K MC</p>
                     </div>
                 </a>
-                <!-- RIP COIN 22 -->
-                <a href="https://pump.fun/coin/3cDeFgHiJkLmNoPqRsTuVwXyZ5tUvWxYxZ8pump" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <a href="https://pump.fun/coin/3cDeFgHiJkLmNoPqRsTuVwXyZ5tUvWxYxZ8pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
                     <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 22 Icon" class="w-full h-24 object-cover">
                     <div class="p-4 text-center">
                         <h3 class="text-lg font-bold">RIP COIN 22</h3>
@@ -601,8 +637,7 @@
                         <p class="text-blue-500">ATH: 1.9M</p>
                     </div>
                 </a>
-                <!-- RIP COIN 23 -->
-                <a href="https://pump.fun/coin/4dEfGhIjKlMnOpQrStUvWxYzA6uB8pump" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <a href="https://pump.fun/coin/4dEfGhIjKlMnOpQrStUvWxYzA6uB8pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
                     <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 23 Icon" class="w-full h-24 object-cover">
                     <div class="p-4 text-center">
                         <h3 class="text-lg font-bold">RIP COIN 23</h3>
@@ -611,11 +646,10 @@
                         <p class="text-blue-500">ATH: 2.3M</p>
                     </div>
                 </a>
-                <!-- RIP COIN 24 -->
-                <a href="https://pump.fun/coin/5eFgHiJkLmNoPqRsTuVwXyZ5tUvWxYxZ9pump" class="block bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <a href="https://pump.fun/coin/5eFgHiJkLmNoPqRsTuVwXyZ5tUvWxYxZ9pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
                     <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 24 Icon" class="w-full h-24 object-cover">
                     <div class="p-4 text-center">
-                        <h3 class="text-lg font-bold">RIP COIN 24</h3>
+                        <h2 class="text-lg font-bold">RIP COIN 24</h2>
                         <hr class="my-2 border-gray-500">
                         <p class="text-gray-400">5 May 1950 - 26 April 2025</p>
                         <p class="text-blue-500">ATH: 1.2M</p>
@@ -625,8 +659,7 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 py-6 text-center">
+    <footer class="py-6 text-center">
         <p class="text-sm text-green-400">The Solana RIP Vault © 2025 | Verify tokens on <a href="https://www.pump.fun/" class="underline hover:text-purple-400">Pump.fun</a></p>
         <p class="text-sm mt-2">Join our <a href="https://x.com" class="underline hover:text-purple-400">X Community</a> for updates</p>
     </footer>
@@ -636,6 +669,7 @@
             const grid = card.closest('.grid-container');
             const isActive = card.getAttribute('data-active') === 'true';
             const allCards = Array.from(grid.querySelectorAll('.coin-card'));
+            const section = card.closest('section');
 
             if (isActive) {
                 allCards.forEach(c => {
@@ -649,10 +683,15 @@
                         c.style.order = '1';
                     } else {
                         c.setAttribute('data-active', 'false');
-                        c.style.order = '3'; /* Push other coins below sub-coin row */
+                        c.style.order = '3';
                     }
                 });
-                window.scrollTo(0, 0); /* Scroll to top of page */
+                if (section && section.id === 'resting-in-peace-section') {
+                    const restingInPeaceHeading = section.querySelector('h2');
+                    if (restingInPeaceHeading) {
+                        restingInPeaceHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
             }
         }
     </script>
