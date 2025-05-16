@@ -46,6 +46,41 @@
             object-position: 0 40%;
             object-fit: cover;
         }
+        /* Specific adjustment for RIP BILL COSBY when active to show eyes and mouth */
+        .coin-card[data-active="true"][href="https://pump.fun/coin/EtQ5zvAK1PChZAJUk6hdJPPWSKZnQ5SwcFUoT43mpump"] img {
+            object-position: 0 40%;
+            object-fit: cover;
+        }
+        /* Specific adjustment for RIP DICK VAN DYKE when active to show face */
+        .coin-card[data-active="true"][href="https://axiom.trade/meme/8v15gCaFvfaRD16EJsDZvGURNUcD3o9PCujFQ1K7Gzqq"] img {
+            object-position: 0 40%;
+            object-fit: cover;
+        }
+        /* Specific adjustment for RIP WARREN BUFFET when active to show face */
+        .coin-card[data-active="true"][href="https://pump.fun/coin/52Ywtkcqii9RjgF88WGNeyPnT347RvzCHZbFKpGwTpAx"] img {
+            object-position: 0 40%;
+            object-fit: cover;
+        }
+        /* Specific adjustment for RIP GEORGE SOROS when active to show face */
+        .coin-card[data-active="true"][href="https://pump.fun/coin/8bJe9muKDFwPknHmUr2KQPbTayqPgptFgJnUoVUgpump"] img {
+            object-position: 0 40%;
+            object-fit: cover;
+        }
+        /* Specific adjustment for RIP DAVID ATTENBOROUGH when active to show face */
+        .coin-card[data-active="true"][href="https://pump.fun/coin/6SCtWE22bUYj5hNd2rFPg7MLbGAJEam31htgYWrnpump"] img {
+            object-position: 0 40%;
+            object-fit: cover;
+        }
+        /* Specific adjustment for RIP HILARY CLINTON when active to show face */
+        .coin-card[data-active="true"][href="https://pump.fun/coin/9S8Zon3XqLMN831anf1nEmP2zZVsMbykUSxaRorBpump"] img {
+            object-position: 0 40%;
+            object-fit: cover;
+        }
+        /* Specific adjustment for RIP BRUCE WILLIS when active to show face */
+        .coin-card[data-active="true"][href="https://pump.fun/coin/47QrzHt3LxxnkvFh2bW4zoLXPM6Sr6kPKr9bKWSBpump"] img {
+            object-position: 0 40%;
+            object-fit: cover;
+        }
         .multi-coin-row {
             display: none;
             grid-column: 1 / -1;
@@ -665,35 +700,3 @@
     </footer>
 
     <script>
-        function toggleCoin(card) {
-            const grid = card.closest('.grid-container');
-            const isActive = card.getAttribute('data-active') === 'true';
-            const allCards = Array.from(grid.querySelectorAll('.coin-card'));
-            const section = card.closest('section');
-
-            if (isActive) {
-                allCards.forEach(c => {
-                    c.setAttribute('data-active', 'false');
-                    c.style.order = '';
-                });
-            } else {
-                allCards.forEach(c => {
-                    if (c === card) {
-                        c.setAttribute('data-active', 'true');
-                        c.style.order = '1';
-                    } else {
-                        c.setAttribute('data-active', 'false');
-                        c.style.order = '3';
-                    }
-                });
-                if (section && section.id === 'resting-in-peace-section') {
-                    const restingInPeaceHeading = section.querySelector('h2');
-                    if (restingInPeaceHeading) {
-                        restingInPeaceHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
-            }
-        }
-    </script>
-</body>
-</html>
