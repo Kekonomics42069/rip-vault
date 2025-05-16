@@ -73,10 +73,6 @@
             background-color: #1f2a44;
             border: 2px solid white;
         }
-        .coin-card[data-active="false"] {
-            background-color: #2d3748;
-            order: 3;
-        }
         .multi-coin-row > div {
             background-color: #2d3748;
         }
@@ -674,7 +670,6 @@
             const grid = card.closest('.grid-container');
             const isActive = card.getAttribute('data-active') === 'true';
             const allCards = Array.from(grid.querySelectorAll('.coin-card'));
-            const section = card.closest('section');
 
             if (isActive) {
                 allCards.forEach(c => {
@@ -686,17 +681,13 @@
                     if (c === card) {
                         c.setAttribute('data-active', 'true');
                         c.style.order = '1';
+                        // Scroll the clicked card to the top of the page
+                        c.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     } else {
                         c.setAttribute('data-active', 'false');
                         c.style.order = '3';
                     }
                 });
-                if (section && section.id === 'resting-in-peace-section') {
-                    const restingInPeaceHeading = section.querySelector('h2');
-                    if (restingInPeaceHeading) {
-                        restingInPeaceHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
             }
         }
     </script>
