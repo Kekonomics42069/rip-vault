@@ -7,19 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-image: url('https://github.com/Kekonomics42069/rip-vault/blob/main/NEWBK.jpg?raw=true');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
+            background: url('https://github.com/Kekonomics42069/rip-vault/blob/main/bkg.jpg?raw=true') center/cover fixed no-repeat;
             min-height: 100vh;
         }
-        header, main, footer {
-            background-color: rgba(0, 0, 0, 0.8); /* 80% opacity black */
-        }
-        header {
-            border: 2px solid white; /* Added white outline */
-        }
+        header, main, footer { background-color: rgba(0, 0, 0, 0.8); }
+        header { border: 2px solid white; }
         .grid-container {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -31,26 +23,11 @@
             background-color: #1f2a44;
             border: 2px solid white;
         }
-        .coin-card[data-active="true"] img {
-            height: 192px;
-            object-position: 0 20%;
-            object-fit: cover;
-        }
-        /* Specific adjustment for RIP JOE BIDEN when active */
-        .coin-card[data-active="true"][href="https://pump.fun/coin/9rXzA4kwrcxnoJoweAo3PjoDHFQnRQ5zJGTxHUDypump"] img {
-            object-position: 0 35%;
-            object-fit: cover;
-        }
-        /* Specific adjustment for RIP DONALD TRUMP when active */
-        .coin-card[data-active="true"][href="https://pump.fun/coin/Eksb48Gcr8RY195L46w9mZSgrQSUfwJoCZjiEHxspump"] img {
-            object-position: 0 40%;
-            object-fit: cover;
-        }
-        /* Specific adjustment for RIP BILL COSBY when active to show eyes and mouth */
-        .coin-card[data-active="true"][href="https://pump.fun/coin/EtQ5zvAK1PChZAJUk6hdJPPWSKZnQ5SwcFUoT43mpump"] img {
-            object-position: 0 40%;
-            object-fit: cover;
-        }
+        .coin-card[data-active="true"] img { height: 192px; object-fit: cover; }
+        .coin-card[data-active="true"][href*="JOE BIDEN"] img { object-position: 0 35%; }
+        .coin-card[data-active="true"][href*="DONALD TRUMP"] img { object-position: 0 40%; }
+        .coin-card[data-active="true"][href*="BILL COSBY"] img { object-position: 0 40%; }
+        .coin-card[data-active="true"][href*="E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5"] img { object-position: 0 30%; }
         .multi-coin-row {
             display: none;
             grid-column: 1 / -1;
@@ -60,35 +37,14 @@
             padding: 0 1rem;
             order: 2;
         }
-        .multi-coin-row--three {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-        .multi-coin-row--four {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-        .coin-card[data-active="true"] + .multi-coin-row {
-            display: grid;
-        }
-        .coin-card[data-active="true"] + .multi-coin-row > div {
-            background-color: #1f2a44;
-            border: 2px solid white;
-        }
-        .multi-coin-row > div {
-            background-color: #2d3748;
-        }
+        .multi-coin-row--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .multi-coin-row--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .coin-card[data-active="true"] + .multi-coin-row { display: grid; }
+        .coin-card[data-active="true"] + .multi-coin-row > div,
+        .multi-coin-row > div { background-color: #2d3748; }
+        .coin-card[data-active="true"] + .multi-coin-row > div { background-color: #1f2a44; border: 2px solid white; }
         @media (max-width: 640px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-            .multi-coin-row {
-                grid-template-columns: 1fr;
-            }
-            .multi-coin-row--three {
-                grid-template-columns: 1fr;
-            }
-            .multi-coin-row--four {
-                grid-template-columns: 1fr;
-            }
+            .grid-container, .multi-coin-row, .multi-coin-row--three, .multi-coin-row--four { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -101,562 +57,11 @@
 
     <main class="max-w-5xl mx-auto py-12 px-4">
         <h2 class="text-2xl font-semibold text-center mb-8">RIP Memecoins</h2>
-        <div class="grid-container">
-            <a href="https://pump.fun/coin/9rXzA4kwrcxnoJoweAo3PjoDHFQnRQ5zJGTxHUDypump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/bdn.jpg?raw=true" alt="RIP BIDEN Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP JOE BIDEN</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 82)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/9rXzA4kwrcxnoJoweAo3PjoDHFQnRQ5zJGTxHUDypump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmQqFeqWYJEPz9CN9Wk1KxmpkCqMXWrd65QwoPtJA2AvgA?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPBIDEN</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:9rXzA4kwrcxnoJoweAo3PjoDHFQnRQ5zJGTxHUDypump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 07/05/2024 18:59:32</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 537K MC</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/9fHHAk2o3h2FUHifDM3DNuZWsw54fCba1rr5SQY5pump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmWQhidN47vWoemzDSzrENcX6BastMhEMNqWDozgTdzNuY?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RipJoe</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:9fHHAk2o3h2FUHifDM3DNuZWsw54fCba1rr5SQY5pump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 07/05/2024 19:02:20</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 31.4K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/Eksb48Gcr8RY195L46w9mZSgrQSUfwJoCZjiEHxspump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/trump%20thumb.png?raw=true" alt="RIP TRUMP Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP DONALD TRUMP</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 78)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/Eksb48Gcr8RY195L46w9mZSgrQSUfwJoCZjiEHxspump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmWPLEc9UTeWKKk7a2pRguGkcoRp7LKFo3s4Aq7NQ8YMAp?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPTRUMP</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:Eksb48Gcr8RY195L46w9mZSgrQSUfwJoCZjiEHxspump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 07/13/2024 17:17:33</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 72.5K MC</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/3kKjA3NnpWGpkTdcsWKCifu5kXqVpTZyW49Pjestpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/Qmbr82tsWVbV5kUCp5pUbgCWRmojd7HaxwGJ6a9XMUNiGn?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIP TRUMP</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:3kKjA3NnpWGpkTdcsWKCifu5kXqVpTZyW49Pjestpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 11/21/2024 15:40:51</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 123K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/EtQ5zvAK1PChZAJUk6hdJPPWSKZnQ5SwcFUoT43mpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmdM42dEKvWJZ7xZ7KJmduVUSDkqRSsLUpwmnATZsvxb4p?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP BILL COSBY Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP BILL COSBY</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 87)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/EtQ5zvAK1PChZAJUk6hdJPPWSKZnQ5SwcFUoT43mpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmdM42dEKvWJZ7xZ7KJmduVUSDkqRSsLUpwmnATZsvxb4p?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPCOSBY</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:EtQ5zvAK1PChZAJUk6hdJPPWSKZnQ5SwcFUoT43mpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 04/21/2025 05:14:43</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 8.5K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/3TJdHNhVViW4Wg4Y1ggx4Ykr6jCHA6nF3NNUabA5pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/clint%20thumb.png?raw=true" alt="RIP CLINT EASTWOOD Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP CLINT EASTWOOD</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 94)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/3TJdHNhVViW4Wg4Y1ggx4Ykr6jCHA6nF3NNUabA5pump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmNZsF17XwBkS5AkJjCQtQNeNKwNLsNMtivcNZnPSyX5fR?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPCLINT</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:3TJdHNhVViW4Wg4Y1ggx4Ykr6jCHA6nF3NNUabA5pump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 12/30/2024 11:44:09</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 12.3K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/BPTbKTRoKgx3CkAbgsyZEayV9tEzWD8SabuzYcr8pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/kirk%20thumb.png?raw=true" alt="RIP (KIRK) WILLIAM SHATNER Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP (KIRK) WILLIAM SHATNER</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 94)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/BPTbKTRoKgx3CkAbgsyZEayV9tEzWD8SabuzYcr8pump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmeUvJyEqotedVfrSaLZP4gfezKXbviNsZHo8M6Q4mZnRC?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPKIRK</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:BPTbKTRoKgx3CkAbgsyZEayV9tEzWD8SabuzYcr8pump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 04/21/2025 05:12:05</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 9.8K MC</p>
-                </div>
-            </div>
-            <a href="https://axiom.trade/meme/8v15gCaFvfaRD16EJsDZvGURNUcD3o9PCujFQ1K7Gzqq" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmZNgaXKbEbSENTCGEfskqs5yPUgCGxXSHpRBJUtLZK3wm?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP DICK VAN DYKE Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP DICK VAN DYKE</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 99)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://axiom.trade/meme/8v15gCaFvfaRD16EJsDZvGURNUcD3o9PCujFQ1K7Gzqq">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmZNgaXKbEbSENTCGEfskqs5yPUgCGxXSHpRBJUtLZK3wm?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPDICK</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:8v15gCaFvfaRD16EJsDZvGURNUcD3o9PCujFQ1K7Gzqq</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 04/21/2025 05:03:34</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 14.2K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/52Ywtkcqii9RjgF88WGNeyPnT347RvzCHZbFKpGwTpAx" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/Qmb7iRS5EGg3DgEXPrVXQBZydDYVxJG8eJoNVBvcNT4Qyj?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP WARREN BUFFET Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP WARREN BUFFET</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 94)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row multi-coin-row--three">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/52Ywtkcqii9RjgF88WGNeyPnT347RvzCHZbFKpGwTpAx">
-                        <img src="https://pump.mypinata.cloud/ipfs/Qmb7iRS5EGg3DgEXPrVXQBZydDYVxJG8eJoNVBvcNT4Qyj?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$BUFFET</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:52Ywtkcqii9RjgF88WGNeyPnT347RvzCHZbFKpGwTpAx</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 06/03/2024 09:56:36</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 27.8K MC (May be inaccurate)</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://dexscreener.com/solana/56mnjkbicikstrsdtfa1uk36hiavbxxrzexmma8axbc2">
-                        <img src="https://pump.mypinata.cloud/ipfs/Qmb7iRS5EGg3DgEXPrVXQBZydDYVxJG8eJoNVBvcNT4Qyj?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPBUFFET</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:13wggeqG3pBU2zo89Fdt2J8YufATCYrKZxYXJwPpkVHw</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 11/25/2024 15:16:02</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 87.9K MC</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/5Wq18ZZT5sWofzhWtj3DFDAwC3kRSUCtsZ3oh8zmpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmSiVgfvNE8kAS3advKd7d9ecXEwojFDNv7q6Z7wJTa6VX?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RipBuffett</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:5Wq18ZZT5sWofzhWtj3DFDAwC3kRSUCtsZ3oh8zmpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 04/21/2025 06:13:19</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 15.6K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/8bJe9muKDFwPknHmUr2KQPbTayqPgptFgJnUoVUgpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/soros.jpg?raw=true" alt="RIP GEORGE SOROS Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP GEORGE SOROS</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 94)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/8bJe9muKDFwPknHmUr2KQPbTayqPgptFgJnUoVUgpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmZj1BcuE2fcXKfFyub1PiHmRdqZKQCHqoo8zftH1BVuxf?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPSOROS</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:8bJe9muKDFwPknHmUr2KQPbTayqPgptFgJnUoVUgpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 04/21/2025 07:15:58</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 6.2K MC</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/MUBEz6xBqGtW7vzS6kGY7pyhbLL9kwj3wJ2RHQ3pump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmbRUsT7A8tbC5qHgcyuf7TpsWgPHsmsEt9uQD5ERDU44f?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$SOROSRIP</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:MUBEz6xBqGtW7vzS6kGY7pyhbLL9kwj3wJ2RHQ3pump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 01/04/2025 21:42:52</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 7.5K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/6SCtWE22bUYj5hNd2rFPg7MLbGAJEam31htgYWrnpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmbTscPuFvBsTcwuKPkjNzZdMoNDoBZVyEbWxXWACjCPGc?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP DAVID ATTENBOROUGH Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP DAVID ATTENBOROUGH</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 99)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row multi-coin-row--three">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/6SCtWE22bUYj5hNd2rFPg7MLbGAJEam31htgYWrnpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmbTscPuFvBsTcwuKPkjNzZdMoNDoBZVyEbWxXWACjCPGc?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPDAVID</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:6SCtWE22bUYj5hNd2rFPg7MLbGAJEam31htgYWrnpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 11/13/2024 05:53:59</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 19.5K MC</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/GfMjsc5UWgGR3b6c6qLRLLsPTxv6aPzPth5DjTXCpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmeYdNBe6sfRZEtohC8e7o22Xpw2rrFNwG4xPvcY2NdZhb?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPDAVID</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:GfMjsc5UWgGR3b6c6qLRLLsPTxv6aPzPth5DjTXCpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 04/26/2025 09:02:08</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 75.5K MC</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/DQ3aDxeR1v8WEoy81Qf4YTn4wpxi7g2ZXANbfNbEpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmbZ4wrG2V1YyW5RSjdVL2PBm3eSEs1seEUSYDnsUJdf49?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIP DAVID</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:DQ3aDxeR1v8WEoy81Qf4YTn4wpxi7g2ZXANbfNbEpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 05/10/2025 00:38:01</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 9.16K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/5LZMmZubJ4RsXyrdFxgHuKT5Sfuzto743wxJuuZkpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmaYdsRwKFAZLAUxsSmX4AbDz6nsb4Du3LKcFTBkLtXHNL?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP BUZZ ALDRIN Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP BUZZ ALDRIN</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 95)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/5LZMmZubJ4RsXyrdFxgHuKT5Sfuzto743wxJuuZkpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmaYdsRwKFAZLAUxsSmX4AbDz6nsb4Du3LKcFTBkLtXHNL?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPBUZZ</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:5LZMmZubJ4RsXyrdFxgHuKT5Sfuzto743wxJuuZkpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 01/06/2025 08:49:38</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 11.7K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/4g3Lwp9MjuQSrJoFMvwZ7NedE14DZfzdQTsZuEWLpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmQ4VFsu3NrMbE6d4xet5wZSYMWdP1Wg1YL6UHhfmntFoD?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP TED TURNER Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP TED TURNER</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 86)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/4g3Lwp9MjuQSrJoFMvwZ7NedE14DZfzdQTsZuEWLpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmQ4VFsu3NrMbE6d4xet5wZSYMWdP1Wg1YL6UHhfmntFoD?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPTED</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:4g3Lwp9MjuQSrJoFMvwZ7NedE14DZfzdQTsZuEWLpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 01/07/2025 08:20:16</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 10.5K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/P1bohCnFJtLJ3HY7W21x3FjCQ5jJQvrpegwEKXKpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmcxtBxt6xs5qwd4nQTvfPDEAJZvwNWxQnf3tHJaQ5dogM?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP BILLY JOEL Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP BILLY JOEL</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 76)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/P1bohCnFJtLJ3HY7W21x3FjCQ5jJQvrpegwEKXKpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmcxtBxt6xs5qwd4nQTvfPDEAJZvwNWxQnf3tHJaQ5dogM?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPBILLY</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:P1bohCnFJtLJ3HY7W21x3FjCQ5jJQvrpegwEKXKpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 05/11/2025 08:27:03</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 13.8K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/9S8Zon3XqLMN831anf1nEmP2zZVsMbykUSxaRorBpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://raw.githubusercontent.com/Kekonomics42069/rip-vault/refs/heads/main/hilary.png" alt="RIP HILARY CLINTON Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP HILARY CLINTON</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 77)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/9S8Zon3XqLMN831anf1nEmP2zZVsMbykUSxaRorBpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmYzHQCGf9L66bQPrF91jAxQwiJq7HWhohtgqoJpZcB41D?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIP Hilary</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:9S8Zon3XqLMN831anf1nEmP2zZVsMbykUSxaRorBpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 12/23/2024 11:55:12</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 7.47K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/EgX8DdztRzLwkXTLNvcjQdboJSrzQ3k9vXhYR6ZTpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP BILL CLINTON Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP BILL CLINTON</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 78)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row multi-coin-row--three">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/EgX8DdztRzLwkXTLNvcjQdboJSrzQ3k9vXhYR6ZTpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPBILL</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:EgX8DdztRzLwkXTLNvcjQdboJSrzQ3k9vXhYR6ZTpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 12/23/2024 16:23:15</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 15.6K MC</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://birdeye.so/token/5ppFKoKJcJ7HkMbTG5AnaKC7eyFjojNhdRMeYVLrpump?chain=solana">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPBILL</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:5ppFKoKJcJ7HkMbTG5AnaKC7eyFjojNhdRMeYVLrpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 12/23/2024 16:31:12</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 8.1K MC</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://birdeye.so/token/FcB7SoNFQQuZtBz1BiZ465ECpRnpZan1kczLKt61pump?chain=solana">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RBILL</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:FcB7SoNFQQuZtBz1BiZ465ECpRnpZan1kczLKt61pump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 12/23/2024 16:31:14</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 9.5K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/47QrzHt3LxxnkvFh2bW4zoLXPM6Sr6kPKr9bKWSBpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmSn59qQ4aNuoJFumT5vqVq9Z1Lud9MzNJy1R1siVSdgxq?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP BRUCE WILLIS Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP BRUCE WILLIS</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 70)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/47QrzHt3LxxnkvFh2bW4zoLXPM6Sr6kPKr9bKWSBpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmSn59qQ4aNuoJFumT5vqVq9Z1Lud9MzNJy1R1siVSdgxq?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIP Bruce</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:47QrzHt3LxxnkvFh2bW4zoLXPM6Sr6kPKr9bKWSBpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 01/02/2025 15:49:22</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 16.7K MC</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://birdeye.so/token/CzapQXkp74nvHHZLA6DWpPprYcCMdwqVqSYdD3mJeVQZ?chain=solana">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmSn59qQ4aNuoJFumT5vqVq9Z1Lud9MzNJy1R1siVSdgxq?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPBRUCE</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:CzapQXkp74nvHHZLA6DWpPprYcCMdwqVqSYdD3mJeVQZ</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 11/30/2024 18:02:18</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 21.7K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/5yoCEh4PMuKM5gK2Mj9wxusAXTtZaueaf7maNJuzpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmYVut6rwtj6GwYQP6e7my3pDdwtRX58xfGY2ZNsWXPe2p?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP ROBERT DE NIRO Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP ROBERT DE NIRO</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 81)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/5yoCEh4PMuKM5gK2Mj9wxusAXTtZaueaf7maNJuzpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmYVut6rwtj6GwYQP6e7my3pDdwtRX58xfGY2ZNsWXPe2p?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPDENIRO</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:5yoCEh4PMuKM5gK2Mj9wxusAXTtZaueaf7maNJuzpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 01/12/2025 06:39:38</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 7.28K MC</p>
-                </div>
-            </div>
-            <a href="https://pump.fun/coin/FysWCjKyJT68ntYwj6tUtBWiqg1qp9hwd2xYge4npump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://pump.mypinata.cloud/ipfs/QmfBnFtAouQyaUecM9mPyzELPAJkb2V9QJ1L6L6WxZ1JkL?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP HARRISON FORD Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP HARRISON FORD</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 82)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/FysWCjKyJT68ntYwj6tUtBWiqg1qp9hwd2xYge4npump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmfBnFtAouQyaUecM9mPyzELPAJkb2V9QJ1L6L6WxZ1JkL?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$Han Solo</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:FysWCjKyJT68ntYwj6tUtBWiqg1qp9hwd2xYge4npump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 01/08/2025 18:12:45</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 6K MC</p>
-                </div>
-            </div>
-            <a href="https://www.pump.fun/?search=RIP+COIN+16" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://github.com/Kekonomics42069/rip-vault/blob/main/LEO.jpg?raw=true" alt="RIP COIN 16 Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP POPE LEO XIV</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 0)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/J4JFzT6TvCKxusQiH6XkLAjwazNmFwWMyzzxDdSH4BK9">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmYedsQjFFoBPBL1aVMAikBE5ropw36Tmheec9SF7W1cf1?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIP POPE</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:J4JFzT6TvCKxusQiH6XkLAjwazNmFwWMyzzxDdSH4BK9</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 05/08/2025 13:33:34</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 12.6K MC</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/4HH45vQAnhVvtk37j98pZ7cphKuCGTuig3S3vwtWpump">
-                        <img src="https://pump.mypinata.cloud/ipfs/QmPBQR9gFFoBPBL1aVMAikBE5ropw36Tmheec9SF7W1cf1?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIP POPE</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:4HH45vQAnhVvtk37j98pZ7cphKuCGTuig3S3vwtWpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 05/08/2025 12:24:41</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 6.1K MC</p>
-                </div>
-            </div>
-            <a href="https://www.pump.fun/?search=RIP+COIN+17" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                <img src="https://vz.cnwimg.com/wp-content/uploads/2021/05/amani.jpg" alt="RIP COIN 17 Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP Giorgio Armani</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 90)</p>
-                </div>
-            </a>
-            <div class="multi-coin-row">
-                <div class="bg-gray-800 rounded-lg p-4 text-center">
-                    <a href="https://pump.fun/coin/9jR6kyB9wP7rDhmUWZWDvTpfR7gHASaA4V19mgUhpump">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/GiorgioArmani.jpg/1200px-GiorgioArmani.jpg" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                    </a>
-                    <h3 class="text-lg font-bold">$RIPGA</h3>
-                    <p class="text-xs text-gray-400 break-words">CA:9jR6kyB9wP7rDhmUWZWDvTpfR7gHASaA4V19mgUhpump</p>
-                    <p class="text-sm text-teal-400 text-left">Created: 04/21/2025 08:33:27</p>
-                    <p class="text-sm text-indigo-400 text-left">ATH: 4.2K MC</p>
-                </div>
-            </div>
-            <a href="https://www.pump.fun/?search=RIP+COIN+18" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
-                <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 18 Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP COIN 18</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 0)</p>
-                </div>
-            </a>
-            <a href="https://www.pump.fun/?search=RIP+COIN+19" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
-                <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 19 Icon" class="w-full h-24 object-cover">
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">RIP COIN 19</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">(Age: 0)</p>
-                </div>
-            </a>
-        </div>
+        <div class="grid-container" id="coinGrid"></div>
 
         <section class="mt-12" id="resting-in-peace-section">
             <h2 class="text-2xl font-semibold text-center mb-8">Resting in Peace</h2>
-            <div class="grid-container">
-                <a href="https://pump.fun/coin/E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false" onclick="toggleCoin(this); event.preventDefault();">
-                    <img src="https://pump.mypinata.cloud/ipfs/QmWCL1diGMQcbpAEdnohvQShTAZTgnV51jSLkDkYYGJLrZ?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP Jimmy Carter Icon" class="w-full h-24 object-cover" style="object-position: 0 20%; object-fit: cover;">
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-bold">RIP Jimmy Carter</h3>
-                        <hr class="my-2 border-gray-500">
-                        <p class="text-gray-400">October 1, 1924 – December 29, 2024</p>
-                    </div>
-                </a>
-                <div class="multi-coin-row">
-                    <div class="bg-gray-800 rounded-lg p-4 text-center">
-                        <a href="https://pump.fun/coin/E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5">
-                            <img src="https://pump.mypinata.cloud/ipfs/QmWCL1diGMQcbpAEdnohvQShTAZTgnV51jSLkDkYYGJLrZ?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                        </a>
-                        <h3 class="text-lg font-bold">$RIPCarter</h3>
-                        <p class="text-xs text-gray-400 break-words">CA:E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5</p>
-                        <p class="text-sm text-teal-400 text-left">Created: 12/29/2024 09:30:00</p>
-                        <p class="text-sm text-indigo-400 text-left">ATH: 544K MC</p>
-                    </div>
-                    <div class="bg-gray-800 rounded-lg p-4 text-center">
-                        <a href="https://pump.fun/coin/F9T59DEq7cukFky2U748Cmjqy8EhpL3zXaCVB4y3lmp6">
-                            <img src="https://pump.mypinata.cloud/ipfs/QmWCL1diGMQcbpAEdnohvQShTAZTgnV51jSLkDkYYGJLrZ?img-width=256&img-dpr=2&img-onerror=redirect" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                        </a>
-                        <h3 class="text-lg font-bold">$RIPJIMMY</h3>
-                        <p class="text-xs text-gray-400 break-words">CA:4dwtjk9TLfEjGuydkCEyXfkc9WmfQFz5jpg9eBRjpump</p>
-                        <p class="text-sm text-teal-400 text-left">Created: 07/23/2024 10:08:09</p>
-                        <p class="text-sm text-indigo-400 text-left">ATH: 121K MC</p>
-                    </div>
-                </div>
-                <a href="https://pump.fun/coin/57LY5XaC9gVNxeqEUSANUpSwgdkGwULiZLZ5b95qpump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
-                    <img src="https://pump.mypinata.cloud/ipfs/QmY9hju2hz3q9SAAreucRPMW7ADRnamckxNk8Pvg8ezCmZ?img-width=256&img-dpr=2&img-onerror=redirect" alt="RIP POPE Icon" class="w-full h-24 object-cover">
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-bold">RIP POPE FRANCIS</h3>
-                        <hr class="my-2 border-gray-500">
-                        <p class="text-gray-400">December 17 1936 - April 21 2025</p>
-                        <p class="text-blue-500">ATH: 4.29M</p>
-                    </div>
-                </a>
-                <a href="https://pump.fun/coin/2bCdEfGhIjKlMnOpQrStUvWxYzA6uB7pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
-                    <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 21 Icon" class="w-full h-24 object-cover">
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-bold">RIP COIN 21</h3>
-                        <hr class="my-2 border-gray-500">
-                        <p class="text-gray-400">October 1, 1924 – December 29, 2024</p>
-                        <p class="text-blue-500">ATH: 121K MC</p>
-                    </div>
-                </a>
-                <a href="https://pump.fun/coin/3cDeFgHiJkLmNoPqRsTuVwXyZ5tUvWxYxZ8pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
-                    <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 22 Icon" class="w-full h-24 object-cover">
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-bold">RIP COIN 22</h3>
-                        <hr class="my-2 border-gray-500">
-                        <p class="text-gray-400">20 June 1945 - 24 April 2025</p>
-                        <p class="text-blue-500">ATH: 1.9M</p>
-                    </div>
-                </a>
-                <a href="https://pump.fun/coin/4dEfGhIjKlMnOpQrStUvWxYzA6uB8pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
-                    <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 23 Icon" class="w-full h-24 object-cover">
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-bold">RIP COIN 23</h3>
-                        <hr class="my-2 border-gray-500">
-                        <p class="text-gray-400">10 October 1930 - 25 April 2025</p>
-                        <p class="text-blue-500">ATH: 2.3M</p>
-                    </div>
-                </a>
-                <a href="https://pump.fun/coin/5eFgHiJkLmNoPqRsTuVwXyZ5tUvWxYxZ9pump" class="coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-active="false">
-                    <img src="https://images.unsplash.com/photo-1551633634-9b9f5f8b0a9c?crop=faces&fit=crop&w=256&h=256&dpr=2" alt="RIP COIN 24 Icon" class="w-full h-24 object-cover">
-                    <div class="p-4 text-center">
-                        <h2 class="text-lg font-bold">RIP COIN 24</h2>
-                        <hr class="my-2 border-gray-500">
-                        <p class="text-gray-400">5 May 1950 - 26 April 2025</p>
-                        <p class="text-blue-500">ATH: 1.2M</p>
-                    </div>
-                </a>
-            </div>
+            <div class="grid-container" id="ripGrid"></div>
         </section>
     </main>
 
@@ -666,6 +71,136 @@
     </footer>
 
     <script>
+        const coins = [
+            { href: "https://pump.fun/coin/9rXzA4kwrcxnoJoweAo3PjoDHFQnRQ5zJGTxHUDypump", img: "https://github.com/Kekonomics42069/rip-vault/blob/main/bdn.jpg?raw=true", name: "RIP JOE BIDEN", age: "(Age: 82)", subs: [
+                { href: "https://pump.fun/coin/9rXzA4kwrcxnoJoweAo3PjoDHFQnRQ5zJGTxHUDypump", img: "https://pump.mypinata.cloud/ipfs/QmQqFeqWYJEPz9CN9Wk1KxmpkCqMXWrd65QwoPtJA2AvgA?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPBIDEN", ca: "9rXzA4kwrcxnoJoweAo3PjoDHFQnRQ5zJGTxHUDypump", created: "07/05/2024 18:59:32", ath: "537K MC" },
+                { href: "https://pump.fun/coin/9fHHAk2o3h2FUHifDM3DNuZWsw54fCba1rr5SQY5pump", img: "https://pump.mypinata.cloud/ipfs/QmWQhidN47vWoemzDSzrENcX6BastMhEMNqWDozgTdzNuY?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RipJoe", ca: "9fHHAk2o3h2FUHifDM3DNuZWsw54fCba1rr5SQY5pump", created: "07/05/2024 19:02:20", ath: "31.4K MC" }
+            ]},
+            { href: "https://pump.fun/coin/Eksb48Gcr8RY195L46w9mZSgrQSUfwJoCZjiEHxspump", img: "https://github.com/Kekonomics42069/rip-vault/blob/main/trump%20thumb.png?raw=true", name: "RIP DONALD TRUMP", age: "(Age: 78)", subs: [
+                { href: "https://pump.fun/coin/Eksb48Gcr8RY195L46w9mZSgrQSUfwJoCZjiEHxspump", img: "https://pump.mypinata.cloud/ipfs/QmWPLEc9UTeWKKk7a2pRguGkcoRp7LKFo3s4Aq7NQ8YMAp?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPTRUMP", ca: "Eksb48Gcr8RY195L46w9mZSgrQSUfwJoCZjiEHxspump", created: "07/13/2024 17:17:33", ath: "72.5K MC" },
+                { href: "https://pump.fun/coin/3kKjA3NnpWGpkTdcsWKCifu5kXqVpTZyW49Pjestpump", img: "https://pump.mypinata.cloud/ipfs/Qmbr82tsWVbV5kUCp5pUbgCWRmojd7HaxwGJ6a9XMUNiGn?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP TRUMP", ca: "3kKjA3NnpWGpkTdcsWKCifu5kXqVpTZyW49Pjestpump", created: "11/21/2024 15:40:51", ath: "123K MC" }
+            ]},
+            { href: "https://pump.fun/coin/EtQ5zvAK1PChZAJUk6hdJPPWSKZnQ5SwcFUoT43mpump", img: "https://pump.mypinata.cloud/ipfs/QmdM42dEKvWJZ7xZ7KJmduVUSDkqRSsLUpwmnATZsvxb4p?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP BILL COSBY", age: "(Age: 87)", subs: [
+                { href: "https://pump.fun/coin/EtQ5zvAK1PChZAJUk6hdJPPWSKZnQ5SwcFUoT43mpump", img: "https://pump.mypinata.cloud/ipfs/QmdM42dEKvWJZ7xZ7KJmduVUSDkqRSsLUpwmnATZsvxb4p?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPCOSBY", ca: "EtQ5zvAK1PChZAJUk6hdJPPWSKZnQ5SwcFUoT43mpump", created: "04/21/2025 05:14:43", ath: "8.5K MC" }
+            ]},
+            { href: "https://pump.fun/coin/3TJdHNhVViW4Wg4Y1ggx4Ykr6jCHA6nF3NNUabA5pump", img: "https://github.com/Kekonomics42069/rip-vault/blob/main/clint%20thumb.png?raw=true", name: "RIP CLINT EASTWOOD", age: "(Age: 94)", subs: [
+                { href: "https://pump.fun/coin/3TJdHNhVViW4Wg4Y1ggx4Ykr6jCHA6nF3NNUabA5pump", img: "https://pump.mypinata.cloud/ipfs/QmNZsF17XwBkS5AkJjCQtQNeNKwNLsNMtivcNZnPSyX5fR?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPCLINT", ca: "3TJdHNhVViW4Wg4Y1ggx4Ykr6jCHA6nF3NNUabA5pump", created: "12/30/2024 11:44:09", ath: "12.3K MC" }
+            ]},
+            { href: "https://pump.fun/coin/BPTbKTRoKgx3CkAbgsyZEayV9tEzWD8SabuzYcr8pump", img: "https://github.com/Kekonomics42069/rip-vault/blob/main/kirk%20thumb.png?raw=true", name: "RIP (KIRK) WILLIAM SHATNER", age: "(Age: 94)", subs: [
+                { href: "https://pump.fun/coin/BPTbKTRoKgx3CkAbgsyZEayV9tEzWD8SabuzYcr8pump", img: "https://pump.mypinata.cloud/ipfs/QmeUvJyEqotedVfrSaLZP4gfezKXbviNsZHo8M6Q4mZnRC?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPKIRK", ca: "BPTbKTRoKgx3CkAbgsyZEayV9tEzWD8SabuzYcr8pump", created: "04/21/2025 05:12:05", ath: "9.8K MC" }
+            ]},
+            { href: "https://axiom.trade/meme/8v15gCaFvfaRD16EJsDZvGURNUcD3o9PCujFQ1K7Gzqq", img: "https://pump.mypinata.cloud/ipfs/QmZNgaXKbEbSENTCGEfskqs5yPUgCGxXSHpRBJUtLZK3wm?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP DICK VAN DYKE", age: "(Age: 99)", subs: [
+                { href: "https://axiom.trade/meme/8v15gCaFvfaRD16EJsDZvGURNUcD3o9PCujFQ1K7Gzqq", img: "https://pump.mypinata.cloud/ipfs/QmZNgaXKbEbSENTCGEfskqs5yPUgCGxXSHpRBJUtLZK3wm?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPDICK", ca: "8v15gCaFvfaRD16EJsDZvGURNUcD3o9PCujFQ1K7Gzqq", created: "04/21/2025 05:03:34", ath: "14.2K MC" }
+            ]},
+            { href: "https://pump.fun/coin/52Ywtkcqii9RjgF88WGNeyPnT347RvzCHZbFKpGwTpAx", img: "https://pump.mypinata.cloud/ipfs/Qmb7iRS5EGg3DgEXPrVXQBZydDYVxJG8eJoNVBvcNT4Qyj?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP WARREN BUFFET", age: "(Age: 94)", subs: [
+                { href: "https://pump.fun/coin/52Ywtkcqii9RjgF88WGNeyPnT347RvzCHZbFKpGwTpAx", img: "https://pump.mypinata.cloud/ipfs/Qmb7iRS5EGg3DgEXPrVXQBZydDYVxJG8eJoNVBvcNT4Qyj?img-width=256&img-dpr=2&img-onerror=redirect", name: "$BUFFET", ca: "52Ywtkcqii9RjgF88WGNeyPnT347RvzCHZbFKpGwTpAx", created: "06/03/2024 09:56:36", ath: "27.8K MC (May be inaccurate)" },
+                { href: "https://dexscreener.com/solana/56mnjkbicikstrsdtfa1uk36hiavbxxrzexmma8axbc2", img: "https://pump.mypinata.cloud/ipfs/Qmb7iRS5EGg3DgEXPrVXQBZydDYVxJG8eJoNVBvcNT4Qyj?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPBUFFET", ca: "13wggeqG3pBU2zo89Fdt2J8YufATCYrKZxYXJwPpkVHw", created: "11/25/2024 15:16:02", ath: "87.9K MC" },
+                { href: "https://pump.fun/coin/5Wq18ZZT5sWofzhWtj3DFDAwC3kRSUCtsZ3oh8zmpump", img: "https://pump.mypinata.cloud/ipfs/QmSiVgfvNE8kAS3advKd7d9ecXEwojFDNv7q6Z7wJTa6VX?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RipBuffett", ca: "5Wq18ZZT5sWofzhWtj3DFDAwC3kRSUCtsZ3oh8zmpump", created: "04/21/2025 06:13:19", ath: "15.6K MC" }
+            ], class: "multi-coin-row--three" },
+            { href: "https://pump.fun/coin/8bJe9muKDFwPknHmUr2KQPbTayqPgptFgJnUoVUgpump", img: "https://github.com/Kekonomics42069/rip-vault/blob/main/soros.jpg?raw=true", name: "RIP GEORGE SOROS", age: "(Age: 94)", subs: [
+                { href: "https://pump.fun/coin/8bJe9muKDFwPknHmUr2KQPbTayqPgptFgJnUoVUgpump", img: "https://pump.mypinata.cloud/ipfs/QmZj1BcuE2fcXKfFyub1PiHmRdqZKQCHqoo8zftH1BVuxf?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPSOROS", ca: "8bJe9muKDFwPknHmUr2KQPbTayqPgptFgJnUoVUgpump", created: "04/21/2025 07:15:58", ath: "6.2K MC" },
+                { href: "https://pump.fun/coin/MUBEz6xBqGtW7vzS6kGY7pyhbLL9kwj3wJ2RHQ3pump", img: "https://pump.mypinata.cloud/ipfs/QmbRUsT7A8tbC5qHgcyuf7TpsWgPHsmsEt9uQD5ERDU44f?img-width=256&img-dpr=2&img-onerror=redirect", name: "$SOROSRIP", ca: "MUBEz6xBqGtW7vzS6kGY7pyhbLL9kwj3wJ2RHQ3pump", created: "01/04/2025 21:42:52", ath: "7.5K MC" }
+            ]},
+            { href: "https://pump.fun/coin/6SCtWE22bUYj5hNd2rFPg7MLbGAJEam31htgYWrnpump", img: "https://pump.mypinata.cloud/ipfs/QmbTscPuFvBsTcwuKPkjNzZdMoNDoBZVyEbWxXWACjCPGc?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP DAVID ATTENBOROUGH", age: "(Age: 99)", subs: [
+                { href: "https://pump.fun/coin/6SCtWE22bUYj5hNd2rFPg7MLbGAJEam31htgYWrnpump", img: "https://pump.mypinata.cloud/ipfs/QmbTscPuFvBsTcwuKPkjNzZdMoNDoBZVyEbWxXWACjCPGc?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPDAVID", ca: "6SCtWE22bUYj5hNd2rFPg7MLbGAJEam31htgYWrnpump", created: "11/13/2024 05:53:59", ath: "19.5K MC" },
+                { href: "https://pump.fun/coin/GfMjsc5UWgGR3b6c6qLRLLsPTxv6aPzPth5DjTXCpump", img: "https://pump.mypinata.cloud/ipfs/QmeYdNBe6sfRZEtohC8e7o22Xpw2rrFNwG4xPvcY2NdZhb?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPDAVID", ca: "GfMjsc5UWgGR3b6c6qLRLLsPTxv6aPzPth5DjTXCpump", created: "04/26/2025 09:02:08", ath: "75.5K MC" },
+                { href: "https://pump.fun/coin/DQ3aDxeR1v8WEoy81Qf4YTn4wpxi7g2ZXANbfNbEpump", img: "https://pump.mypinata.cloud/ipfs/QmbZ4wrG2V1YyW5RSjdVL2PBm3eSEs1seEUSYDnsUJdf49?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP DAVID", ca: "DQ3aDxeR1v8WEoy81Qf4YTn4wpxi7g2ZXANbfNbEpump", created: "05/10/2025 00:38:01", ath: "9.16K MC" }
+            ], class: "multi-coin-row--three" },
+            { href: "https://pump.fun/coin/5LZMmZubJ4RsXyrdFxgHuKT5Sfuzto743wxJuuZkpump", img: "https://pump.mypinata.cloud/ipfs/QmaYdsRwKFAZLAUxsSmX4AbDz6nsb4Du3LKcFTBkLtXHNL?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP BUZZ ALDRIN", age: "(Age: 95)", subs: [
+                { href: "https://pump.fun/coin/5LZMmZubJ4RsXyrdFxgHuKT5Sfuzto743wxJuuZkpump", img: "https://pump.mypinata.cloud/ipfs/QmaYdsRwKFAZLAUxsSmX4AbDz6nsb4Du3LKcFTBkLtXHNL?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPBUZZ", ca: "5LZMmZubJ4RsXyrdFxgHuKT5Sfuzto743wxJuuZkpump", created: "01/06/2025 08:49:38", ath: "11.7K MC" }
+            ]},
+            { href: "https://pump.fun/coin/4g3Lwp9MjuQSrJoFMvwZ7NedE14DZfzdQTsZuEWLpump", img: "https://pump.mypinata.cloud/ipfs/QmQ4VFsu3NrMbE6d4xet5wZSYMWdP1Wg1YL6UHhfmntFoD?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP TED TURNER", age: "(Age: 86)", subs: [
+                { href: "https://pump.fun/coin/4g3Lwp9MjuQSrJoFMvwZ7NedE14DZfzdQTsZuEWLpump", img: "https://pump.mypinata.cloud/ipfs/QmQ4VFsu3NrMbE6d4xet5wZSYMWdP1Wg1YL6UHhfmntFoD?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPTED", ca: "4g3Lwp9MjuQSrJoFMvwZ7NedE14DZfzdQTsZuEWLpump", created: "01/07/2025 08:20:16", ath: "10.5K MC" }
+            ]},
+            { href: "https://pump.fun/coin/P1bohCnFJtLJ3HY7W21x3FjCQ5jJQvrpegwEKXKpump", img: "https://pump.mypinata.cloud/ipfs/QmcxtBxt6xs5qwd4nQTvfPDEAJZvwNWxQnf3tHJaQ5dogM?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP BILLY JOEL", age: "(Age: 76)", subs: [
+                { href: "https://pump.fun/coin/P1bohCnFJtLJ3HY7W21x3FjCQ5jJQvrpegwEKXKpump", img: "https://pump.mypinata.cloud/ipfs/QmcxtBxt6xs5qwd4nQTvfPDEAJZvwNWxQnf3tHJaQ5dogM?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPBILLY", ca: "P1bohCnFJtLJ3HY7W21x3FjCQ5jJQvrpegwEKXKpump", created: "05/11/2025 08:27:03", ath: "13.8K MC" }
+            ]},
+            { href: "https://pump.fun/coin/9S8Zon3XqLMN831anf1nEmP2zZVsMbykUSxaRorBpump", img: "https://raw.githubusercontent.com/Kekonomics42069/rip-vault/refs/heads/main/hilary.png", name: "RIP HILARY CLINTON", age: "(Age: 77)", subs: [
+                { href: "https://pump.fun/coin/9S8Zon3XqLMN831anf1nEmP2zZVsMbykUSxaRorBpump", img: "https://pump.mypinata.cloud/ipfs/QmYzHQCGf9L66bQPrF91jAxQwiJq7HWhohtgqoJpZcB41D?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP Hilary", ca: "9S8Zon3XqLMN831anf1nEmP2zZVsMbykUSxaRorBpump", created: "12/23/2024 11:55:12", ath: "7.47K MC" }
+            ]},
+            { href: "https://pump.fun/coin/EgX8DdztRzLwkXTLNvcjQdboJSrzQ3k9vXhYR6ZTpump", img: "https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP BILL CLINTON", age: "(Age: 78)", subs: [
+                { href: "https://pump.fun/coin/EgX8DdztRzLwkXTLNvcjQdboJSrzQ3k9vXhYR6ZTpump", img: "https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPBILL", ca: "EgX8DdztRzLwkXTLNvcjQdboJSrzQ3k9vXhYR6ZTpump", created: "12/23/2024 16:23:15", ath: "15.6K MC" },
+                { href: "https://birdeye.so/token/5ppFKoKJcJ7HkMbTG5AnaKC7eyFjojNhdRMeYVLrpump?chain=solana", img: "https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPBILL", ca: "5ppFKoKJcJ7HkMbTG5AnaKC7eyFjojNhdRMeYVLrpump", created: "12/23/2024 16:31:12", ath: "8.1K MC" },
+                { href: "https://birdeye.so/token/FcB7SoNFQQuZtBz1BiZ465ECpRnpZan1kczLKt61pump?chain=solana", img: "https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RBILL", ca: "FcB7SoNFQQuZtBz1BiZ465ECpRnpZan1kczLKt61pump", created: "12/23/2024 16:31:14", ath: "9.5K MC" }
+            ], class: "multi-coin-row--three" },
+            { href: "https://pump.fun/coin/47QrzHt3LxxnkvFh2bW4zoLXPM6Sr6kPKr9bKWSBpump", img: "https://pump.mypinata.cloud/ipfs/QmSn59qQ4aNuoJFumT5vqVq9Z1Lud9MzNJy1R1siVSdgxq?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP BRUCE WILLIS", age: "(Age: 70)", subs: [
+                { href: "https://pump.fun/coin/47QrzHt3LxxnkvFh2bW4zoLXPM6Sr6kPKr9bKWSBpump", img: "https://pump.mypinata.cloud/ipfs/QmSn59qQ4aNuoJFumT5vqVq9Z1Lud9MzNJy1R1siVSdgxq?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP Bruce", ca: "47QrzHt3LxxnkvFh2bW4zoLXPM6Sr6kPKr9bKWSBpump", created: "01/02/2025 15:49:22", ath: "16.7K MC" },
+                { href: "https://birdeye.so/token/CzapQXkp74nvHHZLA6DWpPprYcCMdwqVqSYdD3mJeVQZ?chain=solana", img: "https://pump.mypinata.cloud/ipfs/QmSn59qQ4aNuoJFumT5vqVq9Z1Lud9MzNJy1R1siVSdgxq?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPBRUCE", ca: "CzapQXkp74nvHHZLA6DWpPprYcCMdwqVqSYdD3mJeVQZ", created: "11/30/2024 18:02:18", ath: "21.7K MC" }
+            ]},
+            { href: "https://pump.fun/coin/5yoCEh4PMuKM5gK2Mj9wxusAXTtZaueaf7maNJuzpump", img: "https://pump.mypinata.cloud/ipfs/QmYVut6rwtj6GwYQP6e7my3pDdwtRX58xfGY2ZNsWXPe2p?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP ROBERT DE NIRO", age: "(Age: 81)", subs: [
+                { href: "https://pump.fun/coin/5yoCEh4PMuKM5gK2Mj9wxusAXTtZaueaf7maNJuzpump", img: "https://pump.mypinata.cloud/ipfs/QmYVut6rwtj6GwYQP6e7my3pDdwtRX58xfGY2ZNsWXPe2p?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPDENIRO", ca: "5yoCEh4PMuKM5gK2Mj9wxusAXTtZaueaf7maNJuzpump", created: "01/12/2025 06:39:38", ath: "7.28K MC" }
+            ]},
+            { href: "https://pump.fun/coin/FysWCjKyJT68ntYwj6tUtBWiqg1qp9hwd2xYge4npump", img: "https://pump.mypinata.cloud/ipfs/QmfBnFtAouQyaUecM9mPyzELPAJkb2V9QJ1L6L6WxZ1JkL?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP HARRISON FORD", age: "(Age: 82)", subs: [
+                { href: "https://pump.fun/coin/FysWCjKyJT68ntYwj6tUtBWiqg1qp9hwd2xYge4npump", img: "https://pump.mypinata.cloud/ipfs/QmfBnFtAouQyaUecM9mPyzELPAJkb2V9QJ1L6L6WxZ1JkL?img-width=256&img-dpr=2&img-onerror=redirect", name: "$Han Solo", ca: "FysWCjKyJT68ntYwj6tUtBWiqg1qp9hwd2xYge4npump", created: "01/08/2025 18:12:45", ath: "6K MC" }
+            ]},
+            { href: "https://www.pump.fun/?search=RIP+COIN+16", img: "https://github.com/Kekonomics42069/rip-vault/blob/main/LEO.jpg?raw=true", name: "RIP POPE LEO XIV", age: "(Age: 69)", subs: [
+                { href: "https://pump.fun/coin/J4JFzT6TvCKxusQiH6XkLAjwazNmFwWMyzzxDdSH4BK9", img: "https://pump.mypinata.cloud/ipfs/QmYedsQjFFh5huFYg99piFw82p7BccHi6mzv8p8MrFsVQ4?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP POPE", ca: "J4JFzT6TvCKxusQiH6XkLAjwazNmFwWMyzzxDdSH4BK9", created: "05/08/2025 13:33:34", ath: "12.6K MC" },
+                { href: "https://pump.fun/coin/4HH45vQAnhVvtk37j98pZ7cphKuCGTuig3S3vwtWpump", img: "https://pump.mypinata.cloud/ipfs/QmPBQR9gFFoBPBL1aVMAikBE5ropw36Tmheec9SF7W1cf1?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP POPE", ca: "4HH45vQAnhVvtk37j98pZ7cphKuCGTuig3S3vwtWpump", created: "05/08/2025 12:24:41", ath: "6.1K MC" }
+            ]},
+            { href: "https://www.pump.fun/?search=RIP+COIN+17", img: "https://vz.cnwimg.com/wp-content/uploads/2021/05/amani.jpg", name: "RIP Giorgio Armani", age: "(Age: 90)", subs: [
+                { href: "https://pump.fun/coin/9jR6kyB9wP7rDhmUWZWDvTpfR7gHASaA4V19mgUhpump", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/GiorgioArmani.jpg/1200px-GiorgioArmani.jpg", name: "$RIPGA", ca: "9jR6kyB9wP7rDhmUWZWDvTpfR7gHASaA4V19mgUhpump", created: "04/21/2025 08:33:27", ath: "4.2K MC" }
+            ]}
+        ];
+
+        const restingInPeace = [
+            { href: "https://pump.fun/coin/E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5", img: "https://pump.mypinata.cloud/ipfs/QmWCL1diGMQcbpAEdnohvQShTAZTgnV51jSLkDkYYGJLrZ?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP Jimmy Carter", date: "October 1, 1924 – December 29, 2024", subs: [
+                { href: "https://pump.fun/coin/E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5", img: "https://pump.mypinata.cloud/ipfs/QmWCL1diGMQcbpAEdnohvQShTAZTgnV51jSLkDkYYGJLrZ?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPCarter", ca: "E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5", created: "12/29/2024 09:30:00", ath: "544K MC" },
+                { href: "https://pump.fun/coin/F9T59DEq7cukFky2U748Cmjqy8EhpL3zXaCVB4y3lmp6", img: "https://pump.mypinata.cloud/ipfs/QmWCL1diGMQcbpAEdnohvQShTAZTgnV51jSLkDkYYGJLrZ?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPJIMMY", ca: "4dwtjk9TLfEjGuydkCEyXfkc9WmfQFz5jpg9eBRjpump", created: "07/23/2024 10:08:09", ath: "121K MC" }
+            ]},
+            { href: "https://pump.fun/coin/57LY5XaC9gVNxeqEUSANUpSwgdkGwULiZLZ5b95qpump", img: "https://pump.mypinata.cloud/ipfs/QmY9hju2hz3q9SAAreucRPMW7ADRnamckxNk8Pvg8ezCmZ?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP POPE FRANCIS", date: "December 17 1936 - April 21 2025", subs: [ { href: "https://pump.fun/coin/E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5", img: "https://pump.mypinata.cloud/ipfs/QmY9hju2hz3q9SAAreucRPMW7ADRnamckxNk8Pvg8ezCmZ?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP POPE", ca: "57LY5XaC9gVNxeqEUSANUpSwgdkGwULiZLZ5b95qpump", created: "08/29/2024 10:31:05", ath: "4.29M MC" },] }
+        ];
+
+        function createCoinCard(coin, isRIPSection = false) {
+            const card = document.createElement('a');
+            card.href = coin.href;
+            card.className = 'coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow';
+            card.setAttribute('data-active', 'false');
+            card.setAttribute('onclick', 'toggleCoin(this); event.preventDefault();');
+            card.innerHTML = `
+                <img src="${coin.img}" alt="${coin.name} Icon" class="w-full h-24 object-cover">
+                <div class="p-4 text-center">
+                    <h3 class="text-lg font-bold">${coin.name}</h3>
+                    <hr class="my-2 border-gray-500">
+                    <p class="text-gray-400">${isRIPSection ? coin.date : coin.age}</p>
+                </div>
+            `;
+
+            let row = null;
+            if (coin.subs && coin.subs.length) {
+                row = document.createElement('div');
+                row.className = `multi-coin-row ${coin.class || ''}`;
+                coin.subs.forEach(sub => {
+                    row.innerHTML += `
+                        <div class="bg-gray-800 rounded-lg p-4 text-center">
+                            <a href="${sub.href}">
+                                <img src="${sub.img}" alt="Sub-coin Icon" class="w-full h-24 object-cover">
+                            </a>
+                            <h3 class="text-lg font-bold">${sub.name}</h3>
+                            <p class="text-xs text-gray-400 break-words">CA:${sub.ca}</p>
+                            <p class="text-sm text-teal-400 text-left">Created: ${sub.created}</p>
+                            <p class="text-sm text-indigo-400 text-left">ATH: ${sub.ath}</p>
+                        </div>
+                    `;
+                });
+            }
+            return [card, row];
+        }
+
+        // Append coins and their rows to the grid
+        coins.forEach(coin => {
+            const [card, row] = createCoinCard(coin);
+            const grid = document.getElementById('coinGrid');
+            grid.appendChild(card);
+            if (row) grid.appendChild(row);
+        });
+
+        restingInPeace.forEach(coin => {
+            const [card, row] = createCoinCard(coin, true);
+            const grid = document.getElementById('ripGrid');
+            grid.appendChild(card);
+            if (row) grid.appendChild(row);
+        });
+
         function toggleCoin(card) {
             const grid = card.closest('.grid-container');
             const isActive = card.getAttribute('data-active') === 'true';
@@ -681,8 +216,13 @@
                     if (c === card) {
                         c.setAttribute('data-active', 'true');
                         c.style.order = '1';
-                        // Scroll to the very top of the page
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        // Scroll to top of section based on grid
+                        if (grid.id === 'ripGrid') {
+                            const section = document.getElementById('resting-in-peace-section');
+                            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
                     } else {
                         c.setAttribute('data-active', 'false');
                         c.style.order = '3';
