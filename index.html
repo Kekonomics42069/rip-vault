@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62,11 +23,18 @@
             background-color: #1f2a44;
             border: 2px solid white;
         }
-        .coin-card[data-active="true"] img { height: 192px; object-fit: cover; }
+        .coin-card[data-active="true"] img { height: 300px; object-fit: cover; }
         .coin-card[data-active="true"][href*="JOE BIDEN"] img { object-position: 0 35%; }
         .coin-card[data-active="true"][href*="DONALD TRUMP"] img { object-position: 0 40%; }
         .coin-card[data-active="true"][href*="BILL COSBY"] img { object-position: 0 40%; }
         .coin-card[data-active="true"][href*="E8S58CDp7buboeHky1U748Cmjqxz7DgpKzAbVB3x2kv5"] img { object-position: 0 30%; }
+        .coin-card[data-active="true"][href*="5LZMmZubJ4RsXyrdFxgHuKT5Sfuzto743wxJuuZkpump"] img { object-position: 0 30%; }
+        .coin-card[data-active="true"][href*="4g3Lwp9MjuQSrJoFMvwZ7NedE14DZfzdQTsZuEWLpump"] img { object-position: 0 30%; }
+        .coin-card[data-active="true"][href*="P1bohCnFJtLJ3HY7W21x3FjCQ5jJQvrpegwEKXKpump"] img { object-position: 0 30%; }
+        .coin-card[data-active="true"][href*="5yoCEh4PMuKM5gK2Mj9wxusAXTtZaueaf7maNJuzpump"] img { object-position: 0 40%; }
+        .coin-card[data-active="true"][href*="FysWCjKyJT68ntYwj6tUtBWiqg1qp9hwd2xYge4npump"] img { object-position: 0 40%; }
+        .coin-card[data-active="true"][href*="J4JFzT6TvCKxusQiH6XkLAjwazNmFwWMyzzxDdSH4BK9"] img { object-position: 0 70%; }
+        .coin-card img[alt*="BILLY JOEL"] { object-position: 0 30%; }
         .multi-coin-row {
             display: none;
             grid-column: 1 / -1;
@@ -90,11 +58,15 @@
     <header class="py-6 text-center">
         <h1 class="text-4xl font-bold text-purple-500">The Solana RIP Vault</h1>
         <p class="mt-2 text-lg text-green-400">Curated Crypt for RIP Memecoins</p>
-        <p class="mt-4 max-w-2xl mx-auto text-sm text-gray-400">It’s hard finding the right RIP memecoin, or knowing which ones that have been made for who so far, so I compiled a catalog of the best RIP coins to date.</p>
+        <p class="mt-4 max-w-2xl mx-auto text-sm text-gray-400">It’s hard finding the right RIP memecoin, or knowing which ones that have been made for who so far,</p>
+        <p class="mt-2 max-w-2xl mx-auto text-sm text-gray-400">so I compiled a catalog of the best RIP coins to date.</p>
     </header>
 
     <main class="max-w-5xl mx-auto py-12 px-4">
-        <h2 class="text-2xl font-semibold text-center mb-8">RIP Memecoins</h2>
+        <div style="position: relative;">
+            <p style="position: absolute; top: -2rem; left: 0; right: 0; color: #d4a017; text-align: center; font-size: 0.875rem; z-index: 10;">This project is actively evolving with regular updates. To suggest a coin for listing or share feedback, email ripvault@proton.me</p>
+            <h2 class="text-2xl font-semibold text-center mb-8">RIP Memecoins</h2>
+        </div>
         <div class="grid-container" id="coinGrid"></div>
 
         <section class="mt-12" id="resting-in-peace-section">
@@ -175,15 +147,15 @@
                 { href: "https://pump.fun/coin/J4JFzT6TvCKxusQiH6XkLAjwazNmFwWMyzzxDdSH4BK9", img: "https://pump.mypinata.cloud/ipfs/QmYedsQjFFh5huFYg99piFw82p7BccHi6mzv8p8MrFsVQ4?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP POPE", ca: "J4JFzT6TvCKxusQiH6XkLAjwazNmFwWMyzzxDdSH4BK9", created: "05/08/2025 13:33:34", ath: "12.6K MC" },
                 { href: "https://pump.fun/coin/4HH45vQAnhVvtk37j98pZ7cphKuCGTuig3S3vwtWpump", img: "https://pump.mypinata.cloud/ipfs/QmPBQR9gFFoBPBL1aVMAikBE5ropw36Tmheec9SF7W1cf1?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP POPE", ca: "4HH45vQAnhVvtk37j98pZ7cphKuCGTuig3S3vwtWpump", created: "05/08/2025 12:24:41", ath: "6.1K MC" }
             ]},
-            { href: "https://www.pump.fun/?search=RIP+COIN+17", img: "https://vz.cnwimg.com/wp-content/uploads/2021/05/amani.jpg", name: "RIP Giorgio Armani", age: "(Age: 90)", subs: [
+            { href: "https://www.pump.fun/?search=RIP+COIN+17", img: "https://vz.cnwimg.com/wp-content/uploads/2021/05/amani.jpg", name: "RIP GIORGIO ARMANI", age: "(Age: 90)", subs: [
                 { href: "https://pump.fun/coin/9jR6kyB9wP7rDhmUWZWDvTpfR7gHASaA4V19mgUhpump", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/GiorgioArmani.jpg/1200px-GiorgioArmani.jpg", name: "$RIPGA", ca: "9jR6kyB9wP7rDhmUWZWDvTpfR7gHASaA4V19mgUhpump", created: "04/21/2025 08:33:27", ath: "4.2K MC" }
             ]},
-            { href: "https://pump.fun/coin/5GqRLNRnmFNinKpBXXj3zr4KQ6v8iibn89VPSmB4pump", img: "https://i.abcnewsfe.com/a/ec6dd93e-dc74-44ea-b769-c19f11ebe2c1/king-charles-coronation-gty-moe-77-230506_1683372097480_hpMain_16x9.jpg?w=992", name: "RIP King Charles III", age: "(Age: 76)", subs: [
+            { href: "https://pump.fun/coin/5GqRLNRnmFNinKpBXXj3zr4KQ6v8iibn89VPSmB4pump", img: "https://i.abcnewsfe.com/a/ec6dd93e-dc74-44ea-b769-c19f11ebe2c1/king-charles-coronation-gty-moe-77-230506_1683372097480_hpMain_16x9.jpg?w=992", name: "RIP KING CHARLES III", age: "(Age: 76)", subs: [
                 { href: "https://pump.fun/coin/5GqRLNRnmFNinKpBXXj3zr4KQ6v8iibn89VPSmB4pump", img: "https://pump.mypinata.cloud/ipfs/QmdHgt8pwBd7Pb4sRu5x2sjHTK9jGfZSF7EUsTp2yJjFex?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPCHARLES", ca: "5GqRLNRnmFNinKpBXXj3zr4KQ6v8iibn89VPSmB4pump", created: "01/02/2025 14:18:43", ath: "N/A" },
                 { href: "https://pump.fun/coin/2xLywziPtfg8WF2yyjJz8uqeePpY3ifP14Y2VR6m7eMT", img: "https://pump.mypinata.cloud/ipfs/QmecZDHjFthb9d8TvoUoepq2yrLYcgPjwmcsNDZ9wBugJh?img-width=256&img-dpr=2&img-onerror=redirect", name: "$KINGRIP", ca: "2xLywziPtfg8WF2yyjJz8uqeePpY3ifP14Y2VR6m7eMT", created: "01/02/2025 14:18:43", ath: "20K MC" }
             ]},
-            { href: "https://pump.fun/coin/BRZ8e2inxTMwGpcm3zoibGYKSt6VGTtmbfLpZgQEpump", img: "https://pump.mypinata.cloud/ipfs/QmUUyEELecrFfSpXdAN7BKo9vU8T5yzcSVad5tNCrqAvLG?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP Dick Cheney", age: "(Age: 84)", subs: [
-                { href: "https://pump.fun/coin/BRZ8e2inxTMwGpcm3zoibGYKSt6VGTtmbfLpZgQEpump", img: "https://pump.mypinata.cloud/ipfs/QmUUyEELecrFfSpXdAN7BKo9vU8T5yzcSVad5tNCrqAvLG?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP Cheney", ca: "BRZ8e2inxTMwGpcm3zoibGYKSt6VGTtmbfLpZgQEpump", created: "5/16/2025 02:52:09", ath: "N/A" }
+            { href: "https://pump.fun/coin/BRZ8e2inxTMwGpcm3zoibGYKSt6VGTtmbfLpZgQEpump", img: "https://github.com/Kekonomics42069/rip-vault/blob/main/cheney%20baner.png?raw=true", name: "RIP DICK CHENEY", age: "(Age: 84)", subs: [
+                { href: "https://pump.fun/coin/BRZ8e2inxTMwGpcm3zoibGYKSt6VGTtmbfLpZgQEpump", img: "https://pump.mypinata.cloud/ipfs/QmUUyEELecrFfSpXdAN7BKo9vU8T5yzcSVad5tNCrqAvLG?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPCHENEY", ca: "BRZ8e2inxTMwGpcm3zoibGYKSt6VGTtmbfLpZgQEpump", created: "5/16/2025 02:52:09", ath: "N/A" }
             ]}
         ];
 
