@@ -65,8 +65,8 @@
         }
         .coin-card .wiki-icon-link {
             position: absolute;
-            bottom: 12px;
-            right: 12px;
+            bottom: 10px;
+            right: 3px;
             top: auto;
             left: auto;
             z-index: 2;
@@ -91,6 +91,155 @@
         }
         .time-part {
             color: #ffb300 !important; /* amber, override any inherited color */
+        }
+        /* Add hover and active effects for coin cards */
+        .coin-card {
+            transition: transform 0.15s cubic-bezier(0.4,0,0.2,1), box-shadow 0.15s cubic-bezier(0.4,0,0.2,1), border-color 0.15s, max-height 0.4s cubic-bezier(0.4,0,0.2,1), background 0.2s;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+            border: 2px solid transparent;
+            overflow: hidden;
+            max-height: 200px; /* slightly increased for larger image */
+        }
+        .coin-card:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 24px 0 rgba(80,0,160,0.18);
+            border-color: #a78bfa; /* Soft purple border on hover */
+            z-index: 2;
+        }
+        .coin-card[data-active="true"] {
+            transform: scale(1.04);
+            box-shadow: 0 12px 32px 0 rgba(80,0,160,0.22);
+            border-color: #facc15; /* Gold border when active */
+            z-index: 3;
+            max-height: 600px;
+            transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.15s, box-shadow 0.15s, border-color 0.15s, background 0.2s;
+        }
+        .coin-card:not([data-active="true"]) .coin-banner img {
+            height: 120px !important; /* increase image height for compressed cards */
+            object-fit: cover;
+        }
+        .coin-card:not([data-active="true"]) .card-content .p-4 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.9rem;
+            min-height: 48px;
+            font-size: 0.95rem;
+        }
+        .coin-card:not([data-active="true"]) .card-content {
+            min-height: 56px;
+        }
+        .coin-card:not([data-active="true"]) .card-gradient {
+            height: 100px !important; /* Pull gradient higher, but below image */
+            bottom: 0;
+            top: unset;
+            background: linear-gradient(to bottom, rgba(45,55,72,0.21) 0%, rgba(45,55,72,0.95) 100%) !important; /* 20% less transparent at top */
+            pointer-events: none;
+            z-index: 1;
+        }
+        .coin-card:not([data-active="true"]) .coin-banner {
+            position: relative;
+            z-index: 2;
+        }
+        .multi-coin-row {
+            opacity: 0;
+            max-height: 0;
+            transition: opacity 0.3s, max-height 0.5s cubic-bezier(0.4,0,0.2,1);
+        }
+        .coin-card[data-active="true"] + .multi-coin-row {
+            opacity: 1;
+            max-height: 1000px;
+            transition: opacity 0.3s 0.1s, max-height 0.5s cubic-bezier(0.4,0,0.2,1);
+        }
+        /* Add a gradient overlay to the bottom section of each coin card */
+        .bg-gray-800 {
+            position: relative;
+            background: none !important;
+        }
+        .coin-banner {
+            position: relative;
+            z-index: 2;
+        }
+        .bg-gray-800 .card-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: linear-gradient(to bottom, rgba(45,55,72,0.01) 0%, rgba(45, 55, 72, 0.885) 100%);
+            border-radius: 0.5rem;
+        }
+        .bg-gray-800 .card-content {
+            position: relative;
+            z-index: 2;
+        }
+        /* Custom height for Rondell, David, and William Shatner coin cards (collapsed) */
+        .coin-card.rip-rondell,
+        .coin-card.rip-david,
+        .coin-card.rip-william {
+            max-height: 260px !important;
+        }
+        .coin-card.rip-rondell:not([data-active="true"]) .coin-banner img,
+        .coin-card.rip-david:not([data-active="true"]) .coin-banner img,
+        .coin-card.rip-william:not([data-active="true"]) .coin-banner img {
+            height: 120px !important;
+        }
+        /* Custom taller gradient for Rondell, David, and William Shatner cards, reaching just above the name */
+        .coin-card.rip-rondell .card-gradient,
+        .coin-card.rip-david .card-gradient,
+        .coin-card.rip-william .card-gradient {
+            height: 120px !important; /* Pull gradient higher, but below image */
+            bottom: 0;
+            top: unset;
+            background: linear-gradient(to bottom, rgba(45,55,72,0.21) 0%, rgba(45,55,72,0.95) 100%) !important; /* 20% less transparent at top */
+            pointer-events: none;
+            z-index: 1;
+        }
+        .coin-card.rip-rondell .coin-banner,
+        .coin-card.rip-david .coin-banner,
+        .coin-card.rip-william .coin-banner {
+            position: relative;
+            z-index: 2;
+        }
+        /* Custom height for Jimmy Carter and Pope Francis coin cards (collapsed) */
+        .coin-card.rip-jimmy,
+        .coin-card.rip-popefrancis {
+            max-height: 260px !important;
+        }
+        .coin-card.rip-jimmy:not([data-active="true"]) .coin-banner img,
+        .coin-card.rip-popefrancis:not([data-active="true"]) .coin-banner img {
+            height: 120px !important;
+        }
+        /* Move the (Age: xx) text so it is evenly between the bottom and the thin gray horizontal line on collapsed coin cards */
+        .coin-card:not([data-active="true"]) .card-content .text-gray-400 {
+            position: relative;
+            top: 18px;
+            /* Adjust 18px as needed for perfect centering on your layout */
+        }
+        /* Place the age text in the bottom left corner for collapsed coin cards, excluding rondell, david, william, jimmy, popefrancis, and resting in peace coins */
+        .coin-card:not([data-active="true"]):not(.rip-rondell):not(.rip-david):not(.rip-william):not(.rip-jimmy):not(.rip-popefrancis) .card-content .text-gray-400 {
+            position: absolute;
+            left: 1rem;
+            bottom: 1rem;
+            top: unset;
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 500;
+            z-index: 3;
+            /* Lower the age text so it does not overlap the name */
+            transform: translateY(18px);
+        }
+        .coin-card .card-content {
+            position: relative;
+        }
+        /* Move the thin gray line up 50px for collapsed Biden coin card */
+        .coin-card:not([data-active="true"])[href*="JOE BIDEN"] .card-content hr {
+            margin-top: -50px !important;
+            margin-bottom: 2px !important;
+        }
+        /* Make (Age: xx) text offwhite instead of white */
+        .coin-card .card-content .text-gray-4 {
+            color: #e5e7eb !important;
         }
     </style>
 </head>
@@ -163,10 +312,10 @@
             { href: "https://pump.fun/coin/9S8Zon3XqLMN831anf1nEmP2zZVsMbykUSxaRorBpump", img: "https://raw.githubusercontent.com/Kekonomics42069/rip-vault/refs/heads/main/hilary.png", name: "RIP HILARY CLINTON", age: "(Age: 77)", wiki: "https://en.wikipedia.org/wiki/Hillary_Clinton", subs: [
                 { href: "https://pump.fun/coin/9S8Zon3XqLMN831anf1nEmP2zZVsMbykUSxaRorBpump", img: "https://pump.mypinata.cloud/ipfs/QmYzHQCGf9L66bQPrF91jAxQwiJq7HWhohtgqoJpZcB41D?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP Hilary", ca: "9S8Zon3XqLMN831anf1nEmP2zZVsMbykUSxaRorBpump", created: "12/23/2024 11:55:12", ath: "7.47K MC" }
             ]},
-            { href: "https://pump.fun/coin/EgX8DdztRzLwkXTLNvcjQdboJSrzQ3k9vXhYR6ZTpump", img: "https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP BILL CLINTON", age: "(Age: 78)", wiki: "https://en.wikipedia.org/wiki/Bill_Clinton", subs: [
+            { href: "https://pump.fun/coin/EgX8DdztRzLwkXTLNvcjQdboJSrzQ3k9vXhYR6ZTpump", img: "https://i.imgur.com/rxmDJPJ.jpeg", name: "RIP BILL CLINTON", age: "(Age: 78)", wiki: "https://en.wikipedia.org/wiki/Bill_Clinton", subs: [
                 { href: "https://pump.fun/coin/EgX8DdztRzLwkXTLNvcjQdboJSrzQ3k9vXhYR6ZTpump", img: "https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPBILL", ca: "EgX8DdztRzLwkXTLNvcjQdboJSrzQ3k9vXhYR6ZTpump", created: "12/23/2024 16:23:15", ath: "15.6K MC" },
-                { href: "https://birdeye.so/token/5ppFKoKJcJ7HkMbTG5AnaKC7eyFjojNhdRMeYVLrpump?chain=solana", img: "https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPBILL", ca: "5ppFKoKJcJ7HkMbTG5AnaKC7eyFjojNhdRMeYVLrpump", created: "12/23/2024 16:31:12", ath: "8.1K MC" },
-                { href: "https://birdeye.so/token/FcB7SoNFQQuZtBz1BiZ465ECpRnpZan1kczLKt61pump?chain=solana", img: "https://pump.mypinata.cloud/ipfs/QmRNhqUYwt7j9tCDfWXpUojfPVeMvGUCS7ozsR4soKgoaU?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RBILL", ca: "FcB7SoNFQQuZtBz1BiZ465ECpRnpZan1kczLKt61pump", created: "12/23/2024 16:31:14", ath: "9.5K MC" }
+                { href: "https://pump.fun/coin/5ppFKoKJcJ7HkMbTG5AnaKC7eyFjojNhdRMeYVLrpump", img: "https://pump.mypinata.cloud/ipfs/QmeUWLMWPY5Ppg8EAyStdaYDzHuLxantikgwoJ5z2MqAFe?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIPBILL", ca: "5ppFKoKJcJ7HkMbTG5AnaKC7eyFjojNhdRMeYVLrpump", created: "12/23/2024 16:31:12", ath: "8.1K MC" },
+                { href: "https://pump.fun/coin/FcB7SoNFQQuZtBz1BiZ465ECpRnpZan1kczLKt61pump", img: "https://pump.mypinata.cloud/ipfs/QmXhKLbk6tdrmekwHU1XnwN6g3guPQv9dpoGc3eT74pRPV?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RBILL", ca: "FcB7SoNFQQuZtBz1BiZ465ECpRnpZan1kczLKt61pump", created: "12/23/2024 16:31:14", ath: "9.5K MC" }
             ], class: "multi-coin-row--three" },
             { href: "https://pump.fun/coin/47QrzHt3LxxnkvFh2bW4zoLXPM6Sr6kPKr9bKWSBpump", img: "https://pump.mypinata.cloud/ipfs/QmSn59qQ4aNuoJFumT5vqVq9Z1Lud9MzNJy1R1siVSdgxq?img-width=256&img-dpr=2&img-onerror=redirect", name: "RIP BRUCE WILLIS", age: "(Age: 70)", wiki: "https://en.wikipedia.org/wiki/Bruce_Willis", subs: [
                 { href: "https://pump.fun/coin/47QrzHt3LxxnkvFh2bW4zoLXPM6Sr6kPKr9bKWSBpump", img: "https://pump.mypinata.cloud/ipfs/QmSn59qQ4aNuoJFumT5vqVq9Z1Lud9MzNJy1R1siVSdgxq?img-width=256&img-dpr=2&img-onerror=redirect", name: "$RIP Bruce", ca: "47QrzHt3LxxnkvFh2bW4zoLXPM6Sr6kPKr9bKWSBpump", created: "01/02/2025 15:49:22", ath: "16.7K MC" },
@@ -244,26 +393,30 @@
             card.className = 'coin-card bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow';
             card.setAttribute('data-active', 'false');
             card.setAttribute('onclick', 'toggleCoin(this); event.preventDefault();');
+            if (coin.name === "RIP RONDELL SHERIDAN") card.classList.add("rip-rondell");
+            if (coin.name === "RIP DAVID ATTENBOROUGH") card.classList.add("rip-david");
+            if (coin.name && coin.name.includes("WILLIAM SHATNER")) card.classList.add("rip-william");
+            if (coin.name === "RIP Jimmy Carter") card.classList.add("rip-jimmy");
+            if (coin.name === "RIP POPE FRANCIS") card.classList.add("rip-popefrancis");
             // Banner (no wiki icon here)
             let bannerHTML = `<div class="coin-banner">`;
-            if (coin.name === "RIP BILLY JOEL" && card.getAttribute('data-active') === 'true') {
-                bannerHTML += `<img src="https://i.imgur.com/3PkpD07.png" alt="${coin.name} Icon" class="w-full h-24 object-cover">`;
-            } else {
-                bannerHTML += `<img src="${coin.img}" alt="${coin.name} Icon" class="w-full h-24 object-cover">`;
-            }
+            bannerHTML += `<img src="${coin.img}" alt="${coin.name} Icon" class="w-full h-24 object-cover">`;
             bannerHTML += `</div>`;
-            // Main content
-            card.innerHTML = `
-                ${bannerHTML}
-                <div class="p-4 text-center">
-                    <h3 class="text-lg font-bold">${coin.name}</h3>
-                    <hr class="my-2 border-gray-500">
-                    <p class="text-gray-400">${isRIPSection ? coin.date : coin.age}</p>
+            // Main content with gradient overlay
+            let mainContent = `
+                <span class="card-gradient"></span>
+                <div class="card-content">
+                    <div class="p-4 text-center">
+                        <h3 class="text-lg font-bold">${coin.name}</h3>
+                        <hr class="my-1 border-gray-500">
+                        <p class="text-gray-4">${isRIPSection ? coin.date : coin.age}</p>
+                    </div>
+                    ${coin.wiki ? `<a href="${coin.wiki}" class="wiki-icon-link" target="_blank" rel="noopener noreferrer" title="Wikipedia">
+                        <img src="https://i.imgur.com/nYQzey5.png" alt="Wikipedia" style="width:22px;height:22px;display:block;"/>
+                    </a>` : ''}
                 </div>
-                ${coin.wiki ? `<a href="${coin.wiki}" class="wiki-icon-link" target="_blank" rel="noopener noreferrer" title="Wikipedia">
-                    <img src="https://i.imgur.com/nYQzey5.png" alt="Wikipedia" style="width:22px;height:22px;display:block;"/>
-                </a>` : ''}
             `;
+            card.innerHTML = `${bannerHTML}${mainContent}`;
 
             // Prevent wiki icon from toggling the coin card
             setTimeout(() => {
@@ -296,14 +449,17 @@
                         timePart = match[2].trim();
                     }
                     row.innerHTML += `
-                        <div class="bg-gray-800 rounded-lg p-4 text-center">
-                            <a href="${sub.href}">
-                                <img src="${sub.img}" alt="Sub-coin Icon" class="w-full h-24 object-cover">
-                            </a>
-                            <h3 class="text-lg font-bold">${sub.name}</h3>
-                            <p class="text-xs text-gray-400 break-words">CA:${sub.ca}</p>
-                            <p class="text-sm text-teal-400 text-left">Created: <span class="date-part">${datePart}</span>${timePart ? ' <span class="time-part">' + timePart + '</span>' : ''}</p>
-                            <p class="text-sm text-indigo-400 text-left">ATH: ${sub.ath}</p>
+                        <div class="bg-gray-800 rounded-lg p-4 text-center" style="position:relative;overflow:hidden;">
+                            <span class="card-gradient"></span>
+                            <div class="card-content">
+                                <a href="${sub.href}">
+                                    <img src="${sub.img}" alt="Sub-coin Icon" class="w-full h-24 object-cover">
+                                </a>
+                                <h3 class="text-lg font-bold">${sub.name}</h3>
+                                <p class="text-xs text-gray-400 break-words">CA:${sub.ca}</p>
+                                <p class="text-sm text-teal-400 text-left">Created: <span class="date-part">${datePart}</span>${timePart ? ' <span class="time-part">' + timePart + '</span>' : ''}</p>
+                                <p class="text-sm text-indigo-400 text-left">ATH: ${sub.ath}</p>
+                            </div>
                         </div>
                     `;
                 });
