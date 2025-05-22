@@ -45,6 +45,13 @@
             order: 2;
         }
         .multi-coin-row--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .multi-coin-row--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .multi-coin-row[data-biden] {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        .multi-coin-row[data-biden] > div:nth-child(4) {
+            grid-column: 2 / span 2;
+        }
         .coin-card[data-active="true"] + .multi-coin-row { display: grid; }
         .coin-card[data-active="true"] + .multi-coin-row > div,
         .multi-coin-row > div { background-color: #2d3748; }
@@ -214,8 +221,12 @@
 
             let row = null;
             if (coin.subs && coin.subs.length) {
+                let rowClass = `multi-coin-row ${coin.class || ''}`;
+                if (coin.name && coin.name.includes('BIDEN') && coin.subs.length === 4) {
+                    rowClass += ' multi-coin-row--four';
+                }
                 row = document.createElement('div');
-                row.className = `multi-coin-row ${coin.class || ''}`;
+                row.className = rowClass;
                 coin.subs.forEach(sub => {
                     row.innerHTML += `
                         <div class="bg-gray-800 rounded-lg p-4 text-center">
