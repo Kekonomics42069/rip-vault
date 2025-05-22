@@ -255,6 +255,18 @@
                 </a>` : ''}
             `;
 
+            // Prevent wiki icon from toggling the coin card
+            setTimeout(() => {
+                const wikiIcon = card.querySelector('.wiki-icon-link');
+                if (wikiIcon) {
+                    wikiIcon.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        window.open(this.href, '_blank', 'noopener');
+                    });
+                }
+            }, 0);
+
             let row = null;
             if (coin.subs && coin.subs.length) {
                 let rowClass = `multi-coin-row ${coin.class || ''}`;
