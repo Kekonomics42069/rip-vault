@@ -174,10 +174,16 @@
             z-index: 2;
         }
         /* Custom height for Rondell, David, and William Shatner coin cards (collapsed) */
-        .coin-card.rip-rondell,
-        .coin-card.rip-david,
-        .coin-card.rip-william {
+        .coin-card.rip-rondell:not([data-active="true"]),
+        .coin-card.rip-david:not([data-active="true"]),
+        .coin-card.rip-william:not([data-active="true"]) {
             max-height: 260px !important;
+        }
+        /* Remove custom max-height for expanded state of rondell, david, and william */
+        .coin-card.rip-rondell[data-active="true"],
+        .coin-card.rip-david[data-active="true"],
+        .coin-card.rip-william[data-active="true"] {
+            max-height: 600px !important;
         }
         .coin-card.rip-rondell:not([data-active="true"]) .coin-banner img,
         .coin-card.rip-david:not([data-active="true"]) .coin-banner img,
