@@ -62,6 +62,7 @@
         /* Wikipedia icon positioning */
         .coin-card {
             position: relative;
+            overflow: hidden;
         }
         .coin-card .wiki-icon-link {
             position: absolute;
@@ -103,7 +104,7 @@
         .coin-card:hover {
             transform: translateY(-4px) scale(1.03);
             box-shadow: 0 8px 24px 0 rgba(80,0,160,0.18);
-            border-color: #a78bfa; /* Soft purple border on hover */
+            border-color: #facc15; /* Gold border on hover, matches glow */
             z-index: 2;
         }
         .coin-card[data-active="true"] {
@@ -247,6 +248,57 @@
         .coin-card .card-content .text-gray-4 {
             color: #e5e7eb !important;
         }
+        /* 1. Smooth Card Expansion/Collapse & 2. Sub-coin Row Reveal */
+        .coin-card {
+            transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1),
+                        box-shadow 0.3s, 
+                        transform 0.3s, 
+                        background 0.3s, 
+                        opacity 0.3s;
+            opacity: 0.95;
+        }
+        .coin-card[data-active="true"] {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        .multi-coin-row {
+            opacity: 0;
+            max-height: 0;
+            transform: translateY(30px);
+            transition: opacity 0.4s, max-height 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1);
+        }
+        .coin-card[data-active="true"] + .multi-coin-row {
+            opacity: 1;
+            max-height: 1000px;
+            transform: translateY(0);
+            transition: opacity 0.4s 0.1s, max-height 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1);
+        }
+        .section-fade {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .coin-card.glow-effect {
+            box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7), 0 2px 8px 0 rgba(0,0,0,0.10);
+            animation: glow-animation 0.6s linear;
+            border-color: #facc15 !important;
+            z-index: 10;
+        }
+        @keyframes glow-animation {
+            0% {
+                box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7), 0 2px 8px 0 rgba(0,0,0,0.10);
+            }
+            60% {
+                box-shadow: 0 0 32px 16px rgba(250, 204, 21, 0.7), 0 2px 8px 0 rgba(0,0,0,0.10);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(250, 204, 21, 0), 0 2px 8px 0 rgba(0,0,0,0.10);
+            }
+        }
     </style>
 </head>
 <body class="text-white font-sans">
@@ -258,13 +310,13 @@
     </header>
 
     <main class="max-w-5xl mx-auto py-12 px-4">
-        <div style="position: relative;">
+        <div style="position: relative;" class="section-fade">
             <p style="position: absolute; top: -2rem; left: 0; right: 0; color: #d4a017; text-align: center; font-size: 0.875rem; z-index: 10;">This project is actively evolving with regular updates. To suggest a coin for listing or share feedback, email ripvault@proton.me</p>
             <h2 class="text-2xl font-semibold text-center mb-8">RIP Memecoins</h2>
         </div>
-        <div class="grid-container" id="coinGrid"></div>
+        <div class="grid-container section-fade" id="coinGrid"></div>
 
-        <section class="mt-12" id="resting-in-peace-section">
+        <section class="mt-12 section-fade" id="resting-in-peace-section">
             <h2 class="text-2xl font-semibold text-center mb-8">Resting in Peace</h2>
             <div class="grid-container" id="ripGrid"></div>
         </section>
@@ -488,35 +540,100 @@
             if (row) grid.appendChild(row);
         });
 
-        function toggleCoin(card) {
-            const grid = card.closest('.grid-container');
-            const isActive = card.getAttribute('data-active') === 'true';
-            const allCards = Array.from(grid.querySelectorAll('.coin-card'));
-
-            if (isActive) {
-                allCards.forEach(c => {
-                    c.setAttribute('data-active', 'false');
-                    c.style.order = '';
-                });
-            } else {
-                allCards.forEach(c => {
-                    if (c === card) {
-                        c.setAttribute('data-active', 'true');
-                        c.style.order = '1';
-                        // Scroll to top of section based on grid
-                        if (grid.id === 'ripGrid') {
-                            const section = document.getElementById('resting-in-peace-section');
-                            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        } else {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Store last scroll position before expanding a coin
+        let lastScrollY = 0;
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.coin-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Prevent navigation if the card is a link
+                    if (card.tagName === 'A') {
+                        e.preventDefault();
+                    }
+                    const isActive = card.getAttribute('data-active') === 'true';
+                    const grid = card.closest('.grid-container');
+                    const allCards = Array.from(grid.querySelectorAll('.coin-card'));
+                    if (!isActive) {
+                        // Save scroll position and original order before expanding
+                        lastScrollY = window.scrollY;
+                        if (!card.hasAttribute('data-original-order')) {
+                            card.setAttribute('data-original-order', card.style.order || '');
                         }
+                        // Expand logic (scroll to top as before)
+                        allCards.forEach((c, idx) => {
+                            if (c === card) {
+                                c.setAttribute('data-active', 'true');
+                                c.style.order = '1';
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            } else {
+                                c.setAttribute('data-active', 'false');
+                                if (!c.hasAttribute('data-original-order')) {
+                                    c.setAttribute('data-original-order', c.style.order || '');
+                                }
+                                c.style.order = '3';
+                            }
+                        });
                     } else {
-                        c.setAttribute('data-active', 'false');
-                        c.style.order = '3';
+                        // FLIP animation for collapse
+                        const first = card.getBoundingClientRect();
+                        card.setAttribute('data-active', 'false');
+                        // Restore original order for all cards immediately
+                        allCards.forEach(c => {
+                            const origOrder = c.getAttribute('data-original-order');
+                            if (origOrder !== null) {
+                                c.style.order = origOrder;
+                            } else {
+                                c.style.order = '';
+                            }
+                        });
+                        // Wait for DOM update so card returns to grid
+                        requestAnimationFrame(() => {
+                            const last = card.getBoundingClientRect();
+                            const invertX = first.left - last.left;
+                            const invertY = first.top - last.top;
+                            const invertW = first.width / last.width;
+                            const invertH = first.height / last.height;
+                            card.style.transform = `translate(${invertX}px, ${invertY}px) scale(${invertW}, ${invertH})`;
+                            card.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+                            // Start scroll immediately, in sync with animation
+                            window.scrollTo({ top: lastScrollY, behavior: 'smooth' });
+                            requestAnimationFrame(() => {
+                                card.style.transform = '';
+                            });
+                            setTimeout(() => {
+                                card.style.transition = '';
+                            }, 500);
+                        });
                     }
                 });
-            }
-        }
+            });
+        });
+
+        // Glow effect on card click (replaces ripple)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.coin-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    card.classList.remove('glow-effect');
+                    // Force reflow to restart animation
+                    void card.offsetWidth;
+                    card.classList.add('glow-effect');
+                    setTimeout(() => card.classList.remove('glow-effect'), 600);
+                });
+            });
+        });
+
+        // Section Fade-in on Scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeSections = document.querySelectorAll('.section-fade');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            fadeSections.forEach(section => observer.observe(section));
+        });
     </script>
 </body>
 </html>
